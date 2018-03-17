@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Applicant;
+use App\Partner;
+use App\Funding;
+use App\Service;
+use App\Education_level;
 
 class ApplicantController extends Controller
 {
@@ -26,7 +30,12 @@ class ApplicantController extends Controller
      */
     public function create()
     {
-        //
+        $partners = Partner::pluck('name','id')->all();
+        $services = Service::pluck('title', 'id')->all();
+        $education_levels = Education_level::pluck('level', 'id');
+        $fundings = Funding::pluck('title', 'id');
+
+        return view('back.applicant.create', ['partners'=>$partners, 'services'=>$services, 'education_levels'=>$education_levels, 'fundings'=>$fundings]);
     }
 
     /**
@@ -37,7 +46,25 @@ class ApplicantController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,
+        [
+            'last_name'     => 'required|string',
+            'first_name'    => 'required|string',
+            'phone_number'  => 'sometimes|nullable|string',
+            'mail'          => 'sometimes|nullable|email',
+            'company'       => 'sometimes|nullable|string',
+            'career'        => 'sometimes|nullable|string',
+            'contact'       => 'sometimes|nullable|date',
+            'experience'    => 'sometimes|nullable|integer',
+            'price'         => 'sometimes|nullable|regex:/^\d*(\.\d{1,2})?$/',
+            'comment'       => 'sometimes|nullable|regex:/^[a-z0-9\s]+$/'
+        ]);
+
+        $applicant = Applicant::create($request->all());
+        $applicant->partners()->attach($request->partners);
+        $applicant->services()->attach($request->services);
+
+        return redirect()->route('applicant.index')->with('message', 'success');
     }
 
     /**

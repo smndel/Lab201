@@ -14,7 +14,7 @@ class AfogecController extends Controller
      */
     public function index()
     {
-        return view("back.applicant.index");
+        return view("back.index");
     }
 
     /**
@@ -24,7 +24,7 @@ class AfogecController extends Controller
      */
     public function create()
     {
-        //
+    
     }
 
     /**

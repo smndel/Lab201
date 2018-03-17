@@ -1,5 +1,5 @@
   $('.form_datetime').datetimepicker({
-    //language:  'fr',
+    language:  'fr',
     weekStart: 1,
     todayBtn: 1,
     autoclose: 1,
@@ -29,3 +29,4 @@
     maxView: 1,
     forceParse: 0
   });
+

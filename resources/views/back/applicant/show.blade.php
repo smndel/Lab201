@@ -54,17 +54,23 @@
     </div>
     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
       <div class="card-body">
-      	@forelse($applicant->services as $service)
-      	<li class="list-group-item"><strong>Accompagnement</strong> : {{$service->title}}</li>
+      	
+      	<li class="list-group-item"><strong>Accompagnement(s)</strong> : 
+        @forelse($applicant->services as $service)
+        {{$service->title}}
+        @empty
+        @endforelse
+        </li>
+      	
+		    
+      	<li class="list-group-item"><strong>Accompagnateur(s)</strong> : 
+        @forelse($applicant->partners as $partner)
+        {{$partner->name}}
       	@empty
       	@endforelse
-	
-		@forelse($applicant->partner as $partner)
-      	<li class="list-group-item"><strong>Accompagnateur</strong> : {{$partner->last_name}} {{$partner->first_name}}</li>
-      	@empty
-      	@endforelse
+        </li>
 
-        <li class="list-group-item"><strong>Accepté</strong> : {{$applicant->accepted}}</li>
+      <li class="list-group-item"><strong>Accepté</strong> : {{$applicant->accepted}}</li>
 	    <li class="list-group-item"><strong>Financé</strong> : {{$applicant->funded}}</li>
 	    <li class="list-group-item"><strong>Montant</strong> : {{$applicant->price}}</li>
 
@@ -83,7 +89,15 @@
     </div>
     <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
       <div class="card-body">
-        	<p>{{$applicant->comment->comments}}</p>
+        	<p>
+          @if(isset($applicant->comment->comments))
+          {{$applicant->comment->comments}}
+          @else
+          
+          @endif
+
+
+          </p>
       </div>
     </div>
   </div>
@@ -101,13 +115,13 @@
       		<p><strong>Date d'envoi du questionnaire</strong> : 
       		@if(isset($applicant->questionnaire_sent))
         	{{$applicant->questionnaire_sent}}
-			@else
-			Non envoyé
-			@endif
+    			@else
+    			Non envoyé
+    			@endif
         	</p>
 
         	<p><strong>Date de réception du questionnaire</strong> : 
-			@if(isset($applicant->questionnaire_returned))
+			    @if(isset($applicant->questionnaire_returned))
         	{{$applicant->questionnaire_returned}}
         	@else
         	Non retourné
@@ -119,8 +133,7 @@
 
 </div>
 </div>
-
-
+</div>
 
 
 @endsection

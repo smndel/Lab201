@@ -62,7 +62,7 @@ class ApplicantTableSeeder extends Seeder
 
     //Relation des partners avec les formations
         	$partners = App\Partner::pluck('id')->shuffle()->slice(0, 1)->all();
-		    $applicant->partner()->attach($partners); 
+		    $applicant->partners()->attach($partners); 
     	;
 
     //Relation des services avec les formations

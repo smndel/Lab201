@@ -21,8 +21,8 @@ class CreateApplicantsTable extends Migration
             $table->string('phone_number')->nullable();
             $table->string('mail')->nullable();
             $table->dateTime('contact')->nullable();
-            $table->enum('accepted', ['oui', 'non', 'en cours']);
-            $table->enum('funded', ['oui', 'non', 'en cours']);
+            $table->enum('accepted', ['oui', 'non', 'en_cours']);
+            $table->enum('funded', ['oui', 'non', 'en_cours']);
             $table->integer('experience')->nullable();
             $table->string('career', 100)->nullable();
             $table->decimal('price', 6, 2)->nullable();

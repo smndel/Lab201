@@ -18,7 +18,7 @@
                             <a class="nav-link pl-0" href="#"><i class="fa fa-star fa-fw"></i> <span class="d-none d-md-inline">Link</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link pl-0" href="{{route('applicant.index')}}"><i class="fa fa-list fa-fw"></i> <span class="d-none d-md-inline">Link</span></a>
+                            <a class="nav-link pl-0" href="{{route('applicant.index')}}"><i class="fa fa-list fa-fw"></i> <span class="d-none d-md-inline">Bénéficiaires</span></a>
                         </li>
                     </ul>
                 </div>

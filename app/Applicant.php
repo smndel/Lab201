@@ -6,7 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Applicant extends Model
 {
-     public function education_level(){
+    protected $fillable = [
+        'first_name', 'last_name', 'company', 'phone_number', 'contact', 'mail', 'accepted', 'funded', 'experience', 'career', 'price', 'questionnaire_sent', 'questionnaire_returned', 'funding_id', 'education_level_id',
+    ];
+
+
+
+    public function education_level(){
         
     	return $this->belongsTo(Education_level::class);
     }
@@ -21,7 +27,7 @@ class Applicant extends Model
     	return $this->HasOne(Comment::class);
     }
 
-    public function partner(){
+    public function partners(){
         
     	return $this->belongsToMany(Partner::class);
     }
