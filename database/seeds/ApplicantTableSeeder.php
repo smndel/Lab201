@@ -15,6 +15,9 @@ class ApplicantTableSeeder extends Seeder
     
         //Création de niveau d'étude
         App\Education_level::create([
+            'level' => 'Non Défini'
+        ]);
+        App\Education_level::create([
     		'level' => 'BAC'
     	]);
     	App\Education_level::create([
@@ -35,6 +38,9 @@ class ApplicantTableSeeder extends Seeder
 
     	//Création du funding
         App\Funding::create([
+            'title' => 'Non Défini'
+        ]);
+        App\Funding::create([
     		'title' => 'OPACIF'
     	]);
     	App\Funding::create([
@@ -51,12 +57,12 @@ class ApplicantTableSeeder extends Seeder
         	]);
     
    
-        	$education_level = App\Education_level::find(rand(1,6));
+        	$education_level = App\Education_level::find(rand(1,7));
         	$applicant->Education_level()->associate($education_level);
         	$applicant->save();
         
  
-        	$funding = App\Funding::find(rand(1,3));
+        	$funding = App\Funding::find(rand(1,4));
         	$applicant->funding()->associate($funding);
         	$applicant->save();
 

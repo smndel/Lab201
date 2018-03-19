@@ -10,7 +10,7 @@
     <meta name="author" content="">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Webprove Admin</title>
+    <title>Afogec Admin</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="{{asset('css/app.css')}}" rel="stylesheet">
@@ -26,9 +26,6 @@
 
     <!-- Custom Fonts -->
     <link href="{{asset('vendor/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
-
-    <!-- datetimepicker CSS -->
-    <link href="{{asset('css/bootstrap-datetimepicker.min.css')}}" rel="stylesheet" media="screen">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -79,13 +76,14 @@
     
     <!-- Datatables sorter -->
     <script src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-
-    {{-- Datetimepicker --}}
-    <script src="{{asset('vendor/date-picker/bootstrap-datetimepicker.min.js')}}"></script>
-    <script src="{{asset('vendor/date-picker/locales/bootstrap-datetimepicker.fr.js')}}" charset="UTF-8"></script>
   
-    <script src="{{asset('vendor/date-picker/custom.js')}}"></script>
-    <script src="{{asset('js/custom.js')}}"></script>
+    <script src="{{asset('js/confirm.js')}}"></script>
+
+  <!--   <script src="{{asset('vendor/unisharp/laravel-ckeditor/ckeditor.js') }}"></script> -->
+
+   <!--  <script>
+        CKEDITOR.replace( 'summary-ckeditor' );
+    </script> -->
 
     <script>
     $('#toggleNavPosition').click(function() {
@@ -94,6 +92,8 @@
     });
 
     </script>
+
+    
     <!-- Toggle between dark and light navbar-->
     <script>
     $('#toggleNavColor').click(function() {
@@ -104,12 +104,12 @@
 
     </script>
 
-<script>
-        $('#dataTable').DataTable( {
+    <script>
+        $('#applicantTable').DataTable( {
             "processing": true,
             "serverSide": true,
             "ajax": {
-                "url":"<?= route('dataProcessing') ?>",
+                "url":"<?= route('ApplicantProcessing') ?>",
                 "dataType":"json",
                 "type":"POST",
                 "data":{"_token":"<?= csrf_token() ?>"}
@@ -123,11 +123,9 @@
                 {"data":"price"},
                 {"data":"created_at"},
                 {"data":"action", "searchable":false,"orderable":false}
-            ]
-
-    
-} );
-</script>
+            ]    
+    } );
+    </script>
 
 </body>
 

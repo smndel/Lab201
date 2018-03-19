@@ -18,7 +18,7 @@
 	    <h1 class="display-4">{{$applicant->first_name}} {{$applicant->last_name}}</h1>
 	    <h3><strong>Téléphone</strong> : {{$applicant->phone_number}}</h3>
 	    <h3><strong>Mail</strong> : {{$applicant->mail}}</h3>
-	</div>
+	  </div>
 
 
 <div id="accordion">
@@ -70,8 +70,19 @@
       	@endforelse
         </li>
 
-      <li class="list-group-item"><strong>Accepté</strong> : {{$applicant->accepted}}</li>
-	    <li class="list-group-item"><strong>Financé</strong> : {{$applicant->funded}}</li>
+      <li class="list-group-item"><strong>Accepté</strong> : 
+      @if($applicant->accepted=='en_cours')
+      En cours
+      @else
+      {{$applicant->accepted}}
+      @endif
+      </li>
+	    <li class="list-group-item"><strong>Financé</strong> : 
+      @if($applicant->funded=='en_cours')En cours
+      @else
+      {{$applicant->funded}}
+      @endif
+      </li>
 	    <li class="list-group-item"><strong>Montant</strong> : {{$applicant->price}}</li>
 
 	    <li class="list-group-item"><strong>Organisme</strong> : {{$applicant->funding->title}}</li>
@@ -89,15 +100,9 @@
     </div>
     <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
       <div class="card-body">
-        	<p>
-          @if(isset($applicant->comment->comments))
-          {{$applicant->comment->comments}}
-          @else
-          
-          @endif
-
-
-          </p>
+        	<li class="list-group-item">
+              {{$applicant->comment->comments}}
+          </li>
       </div>
     </div>
   </div>

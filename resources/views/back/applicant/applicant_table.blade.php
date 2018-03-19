@@ -16,13 +16,22 @@
 
  <div class="card mb-3">
         <div class="card-header">
-          <i class="fa fa-table"></i> Les Bénéficiaires
+          <h1><i class="fa fa-table"></i> Les Bénéficiaires</h1>
           <a href="{{route('applicant.create')}}" class="btn btn-info btn-xs float-right">Ajouter un Bénéficiaire</a>'
         </div>
+
+        @if(Session::has('message'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+          <strong>{{Session::get('message')}}</strong> 
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        @endif
           
         <div class="card-body">
           <div class="table-responsive">
-            <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0">
+            <table class="table table-bordered table-striped" id="applicantTable" width="100%" cellspacing="0">
               <thead>
                 <tr>
                   <th>Nom</th>
@@ -49,4 +58,5 @@
             </table>
           </div>
         </div>
+   
 @endsection

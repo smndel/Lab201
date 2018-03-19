@@ -11,7 +11,7 @@ class ActualityTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Actuality::class, 5)->create()->each(function($actuality){    		
+        factory(App\Actuality::class, 15)->create()->each(function($actuality){    		
 
 		// Assignation d'une image à une Prestation
         	$link = str_random(12).'.jpg';//hash de lien pour la sécurité(injection de sscripts de protection)

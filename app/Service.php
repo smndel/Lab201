@@ -6,8 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Service extends Model
 {
-    public function intervenants(){
-    	return $this->belongsToMany(Intervenant::class);
+	protected $fillable = [
+        'title', 'description', 'type', 'category',
+    ];
+
+    public function partners(){
+    	return $this->belongsToMany(Partner::class);
     }
 
     public function picture(){

@@ -11,9 +11,9 @@ class ServiceTableSeeder extends Seeder
      */
     public function run()
     {
-        // Storage::disk('local')->delete(Storage::AllFiles());
+        Storage::disk('local')->delete(Storage::AllFiles());
 
-    	factory(App\Service::class, 10)->create()->each(function($service){    		
+    	factory(App\Service::class, 10)->create()->each(function($service){    
 
 		// Assignation d'une image à une service
         	$link = str_random(12).'.jpg';//hash de lien pour la sécurité(injection de sscripts de protection)

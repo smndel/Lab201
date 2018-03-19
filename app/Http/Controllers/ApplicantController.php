@@ -18,7 +18,7 @@ class ApplicantController extends Controller
      */
     public function index()
     {
-        $applicants = Applicant::paginate(10);
+        $applicants = Applicant::all();
 
         return view('back.applicant.applicant_table', ['applicants' => $applicants]);
     }
@@ -57,14 +57,19 @@ class ApplicantController extends Controller
             'contact'       => 'sometimes|nullable|date',
             'experience'    => 'sometimes|nullable|integer',
             'price'         => 'sometimes|nullable|regex:/^\d*(\.\d{1,2})?$/',
-            'comment'       => 'sometimes|nullable|regex:/^[a-z0-9\s]+$/'
+            'comment'       => 'sometimes|nullable',
         ]);
 
         $applicant = Applicant::create($request->all());
         $applicant->partners()->attach($request->partners);
         $applicant->services()->attach($request->services);
 
-        return redirect()->route('applicant.index')->with('message', 'success');
+        $comment = $request->comment;
+        $applicant->comment()->create([
+            'comments' => $comment,
+        ]);
+
+        return redirect()->route('applicant.index')->with('message', 'Bénéficiaire enregistré');
     }
 
     /**
@@ -89,7 +94,13 @@ class ApplicantController extends Controller
      */
     public function edit($id)
     {
-       
+        $applicant = Applicant::find($id);
+        $partners = Partner::pluck('name','id')->all();
+        $services = Service::pluck('title', 'id')->all();
+        $education_levels = Education_level::pluck('level', 'id');
+        $fundings = Funding::pluck('title', 'id');
+
+        return view('back.applicant.edit', ['partners'=>$partners, 'services'=>$services, 'education_levels'=>$education_levels, 'fundings'=>$fundings, 'applicant'=>$applicant]);   
     }
 
     /**
@@ -101,7 +112,31 @@ class ApplicantController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,
+        [
+            'last_name'     => 'required|string',
+            'first_name'    => 'required|string',
+            'phone_number'  => 'sometimes|nullable|string',
+            'mail'          => 'sometimes|nullable|email',
+            'company'       => 'sometimes|nullable|string',
+            'career'        => 'sometimes|nullable|string',
+            'contact'       => 'sometimes|nullable|date',
+            'experience'    => 'sometimes|nullable|integer',
+            'price'         => 'sometimes|nullable|regex:/^\d*(\.\d{1,2})?$/',
+            'comment'       => 'sometimes|nullable',
+        ]);
+
+        $applicant = Applicant::find($id);
+        $applicant->update($request->all());
+        $applicant->partners()->sync($request->partners);
+        $applicant->services()->sync($request->services);
+
+        $comment = $request->comment;
+        $applicant->comment()->update([
+            'comments' => $comment,
+        ]);
+
+        return redirect()->route('applicant.index')->with('message', 'Bénéficiaire modifié');
     }
 
     /**
@@ -112,11 +147,14 @@ class ApplicantController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $applicant = Applicant::find($id);
+        $applicant->delete();
+
+        return redirect()->route('applicant.index')->with('message', 'Bénéficiaire effacé');
     }
 
 
-    public function getUsers(Request $request){
+    public function getApplicants(Request $request){
         
         $columns = array(
             0 => 'last_name',
@@ -172,8 +210,8 @@ class ApplicantController extends Controller
                 $nestedData['created_at'] = date('d-m-Y H:i:s',strtotime($r->created_at));
                 $nestedData['action'] = '
                     <a href=" '.route('applicant.show', $r->id).'" class="btn btn-success btn-xs">Voir</a>
-                    <a href="#!" class="btn btn-warning btn-xs">Editer</a>
-                    <a href="#!" class="btn btn-danger btn-xs">Supprimer</a>';
+                    <a href=" '.route('applicant.edit', $r->id).'" class="btn btn-warning btn-xs">Editer</a>
+                    <form style="display:inline-block" class="delete" action="'.route('applicant.destroy', $r->id).'" method="POST"><button type="submit" class="btn btn-danger btn-xs" value="delete">Supprimer</button><input type="hidden" name="_method" value="DELETE"><input type="hidden" name="_token" value="'.csrf_token().'"></form>';
 
                 $data[] = $nestedData;
             }

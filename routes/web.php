@@ -20,5 +20,13 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('admin', 'AfogecController')->middleware('auth');
 
 Route::resource('applicant', 'ApplicantController')->middleware('auth');
+Route::post('/data/applicant', 'ApplicantController@getApplicants')->name('ApplicantProcessing');
 
-Route::post('/data/applicant', 'ApplicantController@getUsers')->name('dataProcessing');
+Route::resource('partner', 'PartnerController')->middleware('auth');
+
+Route::resource('service', 'ServiceController')->middleware('auth');
+
+Route::resource('actuality', 'ActualityController')->middleware('auth');
+
+
+

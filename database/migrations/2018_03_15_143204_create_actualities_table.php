@@ -17,6 +17,7 @@ class CreateActualitiesTable extends Migration
             $table->increments('id');
             $table->string('title', 100);
             $table->text('description')->nullable();
+            $table->enum('statut', ['publish', 'unpublish']);
             $table->timestamps();
         });
     }

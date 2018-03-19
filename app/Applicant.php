@@ -10,8 +10,6 @@ class Applicant extends Model
         'first_name', 'last_name', 'company', 'phone_number', 'contact', 'mail', 'accepted', 'funded', 'experience', 'career', 'price', 'questionnaire_sent', 'questionnaire_returned', 'funding_id', 'education_level_id',
     ];
 
-
-
     public function education_level(){
         
     	return $this->belongsTo(Education_level::class);

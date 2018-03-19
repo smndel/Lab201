@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Applicant;
+use App\Partner;
+use App\Service;
+use App\Actuality;
 
 class AfogecController extends Controller
 {
@@ -14,7 +17,13 @@ class AfogecController extends Controller
      */
     public function index()
     {
-        return view("back.index");
+        $applicants = Applicant::all();
+        $partners = Partner::all();
+        $services = Service::all();
+        $actualities = Actuality::orderBy('created_at')->take(6)->get();
+        
+
+        return view("back.index", ['applicants'=>$applicants, 'partners'=>$partners, 'services'=>$services, 'actualities'=>$actualities]);
     }
 
     /**

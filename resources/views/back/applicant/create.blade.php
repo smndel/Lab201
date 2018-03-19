@@ -1,5 +1,6 @@
 @extends('back.layouts.master')
 
+
 @section('content')
 <div class="content-wrapper">
     <div class="container-fluid">
@@ -19,11 +20,8 @@
 
   <div class="card col-md-8 mx-auto">
     	<div class="jumbotron">
-  	    <h1 class="display-4">Formulaire d'Inscription</h1>
+  	    <h1 class="display-4">Formulaire d'Inscription Bénéficaire</h1>
   	   </div>
-
-
-    <div id="accordion">
 
       <div class="card">
         <div class="card-header" id="headingOne">
@@ -92,12 +90,12 @@
 
     	    <li class="list-group-item"><strong>Premier contact</strong> : 
                   <div class="col-4 col-form-label">
-                  <input class="form-control" name="contact" size="16" type="date" value="{{old('questionnaire_sent')}}"> 
+                  <input class="form-control" name="contact" size="16" type="date" value="{{old('contact')}}"> 
                   </div>
           </li>
 
     	    <li class="list-group-item"><strong>Expérience</strong>
-            <input type="number" name="experience" id="experience" min="1" max="50" value="{{old('sexperience')}}">
+            <input type="number" name="experience" id="experience" min="1" max="50" value="{{old('experience')}}">
             @if($errors->has('experience'))
             <span class="error" style="color : red;">
             {{$errors->first('experience')}}
@@ -107,7 +105,7 @@
           </li>
 
     	    <li class="list-group-item"><strong>Niveau d'étude</strong> : 
-            <select class="form-control" id="education_level_id" name="education_level_id"   
+            <select class="form-control" id="education_level_id" name="education_level_id">   
             @forelse($education_levels as $id => $education_level)  
             <option value="{{$id}}" @if(old('education_level_id') == $id) {{'selected'}} @endif>{{$education_level}}</option>
             @empty
@@ -145,14 +143,14 @@
           
           	<li class="list-group-item"><strong>Accompagnateur(s)</strong> : 
               <br>
-              @foreach($partners as $id => $first_name)
+              @foreach($partners as $id => $name)
               <input 
                 name="partners[]" 
                 type="checkbox" 
                 value="{{$id}}" 
                 id="partner{{$id}}" 
                 {{ ( !empty(old('partners')) and in_array($id, old('partners')) )? 'checked' : ''  }}>
-                <label class="control-label" >{{$first_name}}</label><br>
+                <label class="control-label" >{{$name}}</label><br>
               @endforeach
             </li>
           
@@ -227,7 +225,7 @@
             </li>
 
             <li class="list-group-item">
-            	<p><strong>Date de réception du questionnaire</strong> :</p>
+            	<strong>Date de réception du questionnaire</strong> :
                   <div class="col-4 col-form-label">
                   <input class="form-control" name="questionnaire_returned" size="16" type="date" value="{{old('questionnaire_sent')}}"> 
                   </div>
@@ -251,5 +249,7 @@
 </form>
 
 </div>
+
+
 
 @endsection

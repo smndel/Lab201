@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Partner extends Model
 {
+	protected $fillable = [
+        'name', 'bio',
+    ];
+
     public function picture(){
     	return $this->hasOne(Picture_partners::class);
     }
