@@ -20,14 +20,14 @@ class CreateApplicantsTable extends Migration
             $table->string('last_name', 100)->nullable();
             $table->string('phone_number')->nullable();
             $table->string('mail')->nullable();
-            $table->dateTime('contact')->nullable();
+            $table->date('contact')->nullable();
             $table->enum('accepted', ['oui', 'non', 'en_cours']);
             $table->enum('funded', ['oui', 'non', 'en_cours']);
             $table->integer('experience')->nullable();
             $table->string('career', 100)->nullable();
             $table->decimal('price', 6, 2)->nullable();
-            $table->dateTime('questionnaire_sent')->nullable();
-            $table->dateTime('questionnaire_returned')->nullable();
+            $table->date('questionnaire_sent')->nullable();
+            $table->date('questionnaire_returned')->nullable();
 
             $table->unsignedInteger('funding_id')->nullable();
             $table->foreign('funding_id')->references('id')->on('fundings');

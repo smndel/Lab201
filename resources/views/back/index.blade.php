@@ -34,7 +34,7 @@
               <div class="card-body-icon">
                 <i class="fa fa-heart fa-fw"></i>
               </div>
-              <div class="mr-5"><h3>{{count($partners)}} Collaborateur</h3></div>
+              <div class="mr-5"><h3>{{count($partners)}} Collaborateurs</h3></div>
             </div>
             <a class="card-footer text-white clearfix small z-1" href="{{route('partner.index')}}">
               <span class="float-left">Details</span>

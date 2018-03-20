@@ -46,6 +46,7 @@ class ApplicantController extends Controller
      */
     public function store(Request $request)
     {
+
         $this->validate($request,
         [
             'last_name'     => 'required|string',
@@ -207,7 +208,7 @@ class ApplicantController extends Controller
                 $nestedData['accepted'] = $r->accepted;
                 $nestedData['funded'] = $r->funded;
                 $nestedData['price'] = $r->price;
-                $nestedData['created_at'] = date('d-m-Y H:i:s',strtotime($r->created_at));
+                $nestedData['created_at'] = date('d-m-Y',strtotime($r->created_at));
                 $nestedData['action'] = '
                     <a href=" '.route('applicant.show', $r->id).'" class="btn btn-success btn-xs">Voir</a>
                     <a href=" '.route('applicant.edit', $r->id).'" class="btn btn-warning btn-xs">Editer</a>

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Partner;
-use App\Service;
+use App\Applicant;
 use Storage;
 
 class PartnerController extends Controller
@@ -125,7 +125,9 @@ class PartnerController extends Controller
 
         $link = $request->file('picture')->store('./');
         //Mettre à jour la table picture pour le lien vers l'image dans la base de donnée
-        $partner->picture()->create(['link' => $link]);
+        $applicant=Apllicant::find($request->aaplicant_id);
+
+        $applicant->picture()->create(['link' => $link]);
         }
     
 

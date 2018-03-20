@@ -17,5 +17,9 @@ class DatabaseSeeder extends Seeder
     	$this->call(PartnerTableSeeder::class);
         $this->call(ActualityTableSeeder::class);
         $this->call(ApplicantTableSeeder::class);
+        $this->call(EventTableSeeder::class);
+        $this->call(AccreditationTableSeeder::class);
+        $this->call(ReferenceTableSeeder::class);
+        
     }
 }

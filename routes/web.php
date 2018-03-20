@@ -28,5 +28,10 @@ Route::resource('service', 'ServiceController')->middleware('auth');
 
 Route::resource('actuality', 'ActualityController')->middleware('auth');
 
+Route::resource('accreditation', 'AccreditationController')->middleware('auth');
 
+Route::resource('reference', 'ReferenceController')->middleware('auth');
 
+Route::resource('testimony', 'TestimonyController')->middleware('auth');
+
+Route::get('events', 'EventController@index')->name('calendar');

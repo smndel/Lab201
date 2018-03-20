@@ -38,4 +38,13 @@ class Applicant extends Model
     public function payment(){
     	return $this->belongsToMany(Payment::class);
     }
+
+    public function testimony(){
+        
+        return $this->HasOne(Testimony::class);
+    }
+
+    public function picture(){
+        return $this->hasOne(Picture_applicants::class);
+    }
 }

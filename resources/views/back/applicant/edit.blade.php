@@ -92,11 +92,10 @@
             @endif
           </li>
 
-    	    <li class="list-group-item">
-                  <strong>Ancienne date de Premier contact</strong> : {{Carbon\Carbon::parse($applicant->contact)->format('d.m.Y')}}
+    	    <li class="list-group-item"> 
                   <strong>Nouvelle date de Premier contact</strong> : 
                   <div class="col-4 col-form-label">
-                  <input class="form-control" name="contact" size="16" type="date" value="{{old('questionnaire_sent')}}"> 
+                  <input class="form-control" name="contact" size="16" type="date" value="{{$applicant->questionnaire_sent}}"> 
                   </div>
           </li>
 
@@ -237,7 +236,6 @@
           <div class="card-body">
 
             <li class="list-group-item">   
-              <strong>Ancienne date d'envoi du questionnaire</strong> : {{Carbon\Carbon::parse($applicant->questionnaire_sent)->format('d.m.Y')}}<br>
           		<strong>Nouvelle date d'envoi du questionnaire</strong> :
                   <div class="col-4 col-form-label">
                   <input class="form-control" name="questionnaire_sent" size="16" type="date" value="{{$applicant->questionnaire_sent}}"> 
@@ -245,10 +243,9 @@
             </li>
 
             <li class="list-group-item">
-              <strong>Ancienne date de réception du questionnaire</strong> : {{Carbon\Carbon::parse($applicant->questionnaire_returned)->format('d.m.Y')}}<br>
             	<strong>Nouvelle Date de réception du questionnaire</strong> :
                   <div class="col-4 col-form-label">
-                  <input class="form-control" name="questionnaire_returned" size="16" type="date" value="{{$applicant->questionnaire_sent}}"> 
+                  <input class="form-control" name="questionnaire_returned" size="16" type="date" value="{{$applicant->questionnaire_returned}}"> 
                   </div>
             </li>
 
@@ -259,13 +256,6 @@
         <div class="form-group">
             <button type="submit" class="btn btn-success btn-lg btn-block">Valider
             </button>
-        </div>
-        <div class="form-group">
-            <form class="delete" action="'.route('applicant.destroy', $applicant->id).'" method="POST">
-              <button type="submit" class="btn btn-danger btn-lg btn-block" value="delete">Supprimer</button>
-              <input type="hidden" name="_method" value="DELETE">
-              <input type="hidden" name="_token" value="{{csrf_token()}}">
-            </form>
         </div>
 
       </div>

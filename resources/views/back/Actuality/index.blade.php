@@ -66,7 +66,7 @@
         @else Non publié
         @endif
       </li>
-      <li class="list-group-item"><strong>Date</strong> : {{$actuality->created_at}}</li>
+      <li class="list-group-item"><strong>Date</strong> : {{Carbon\Carbon::parse($actuality->created_at)->format('d.m.Y')}}</li>
       </div>
     </div>  
   </div>

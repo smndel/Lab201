@@ -35,7 +35,7 @@
       <div class="card-body">
 	    <li class="list-group-item"><strong>Entreprise</strong> : {{$applicant->company}}</li>
 	    <li class="list-group-item"><strong>Poste</strong> : {{$applicant->career}}</li>
-	    <li class="list-group-item"><strong>Premier contact</strong> : {{$applicant->contact}}</li>
+	    <li class="list-group-item"><strong>Premier contact</strong> : {{Carbon\Carbon::parse($applicant->contact)->format('d.m.Y')}}</li>
 	    <li class="list-group-item"><strong>Expérience</strong> : {{$applicant->experience}} ans</li>
 	    <li class="list-group-item"><strong>Niveau d'étude</strong> : {{$applicant->education_level->level}}</li> 
 
@@ -119,7 +119,7 @@
       <div class="card-body">
       		<p><strong>Date d'envoi du questionnaire</strong> : 
       		@if(isset($applicant->questionnaire_sent))
-        	{{$applicant->questionnaire_sent}}
+        	{{Carbon\Carbon::parse($applicant->questionnaire_sent)->format('d.m.Y')}}
     			@else
     			Non envoyé
     			@endif
@@ -127,7 +127,7 @@
 
         	<p><strong>Date de réception du questionnaire</strong> : 
 			    @if(isset($applicant->questionnaire_returned))
-        	{{$applicant->questionnaire_returned}}
+        	{{Carbon\Carbon::parse($applicant->questionnaire_returned)->format('d.m.Y')}}
         	@else
         	Non retourné
         	@endif

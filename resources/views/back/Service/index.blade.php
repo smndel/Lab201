@@ -49,7 +49,7 @@
                   <td>{{$service->title}}</td>
                   <td>{{$service->category}}</td>
                   <td>{{$service->statut}}</td>
-                  <td>{{$service->created_at}}</td>
+                  <td>{{Carbon\Carbon::parse($service->created_at)->format('d.m.Y')}}</td>
                   <td><a href="{{route('service.show', $service)}}" class="btn btn-success btn-xs">Voir</a>
                     <a href="{{route('service.edit', $service)}}" class="btn btn-warning btn-xs">Editer</a>
                     <form style="display:inline-block" class="delete" action="{{route('service.destroy', $service)}}" method="POST">
@@ -85,7 +85,7 @@
                   <td>{{$service->title}}</td>
                   <td>{{$service->category}}</td>
                   <td>{{$service->statut}}</td>
-                  <td>{{$service->created_at}}</td>
+                  <td>{{Carbon\Carbon::parse($service->created_at)->format('d.m.Y')}}</td>
                   <td><a href="{{route('service.show', $service)}}" class="btn btn-success btn-xs">Voir</a>
                     <a href="{{route('service.edit', $service)}}" class="btn btn-warning btn-xs">Editer</a>
                     <form style="display:inline-block" class="delete" action="{{route('service.destroy', $service)}}" method="POST">
