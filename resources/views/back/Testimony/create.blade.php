@@ -34,8 +34,11 @@
     <div class="card-body">
       <li class="list-group-item"><strong>Sélection du Bénéficiaire</strong> : 
             <select class="form-control" id="applicant_id" name="applicant_id">   
-            @forelse($applicants as $id => $applicant)  
-            <option value="{{$id}}" @if(old('applicant_id') == $id) {{'selected'}} @endif>{{$applicant->first_name}} {{$applicant->first_name}}</option>
+            @forelse($applicants as $applicant) 
+                @if(in_array($applicant->id, $present_id))
+                @else
+                <option value="{{$applicant->id}}" @if(old('applicant_id') == $applicant->id) {{'selected'}} @endif>{{$applicant->first_name}} {{$applicant->last_name}}</option>
+                @endif 
             @empty
             @endforelse
             </select>

@@ -17,7 +17,7 @@ class CreateTestimoniesTable extends Migration
             $table->increments('id');
             $table->text('testimony')->nullable();
             $table->enum('statut', ['publish', 'unpublish']);
-            $table->unsignedInteger('applicant_id')->nullable();
+            $table->unsignedInteger('applicant_id');
             $table->foreign('applicant_id')->references('id')->on('applicants')->onDelete('cascade');
             $table->timestamps();
         });

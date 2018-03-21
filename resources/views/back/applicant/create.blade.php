@@ -21,7 +21,7 @@
   <div class="card col-md-8 mx-auto">
     	<div class="jumbotron">
   	    <h1 class="display-4">Formulaire d'Inscription Bénéficaire</h1>
-  	   </div>
+  	 </div>
 
       <div class="card">
         <div class="card-header" id="headingOne">
@@ -171,12 +171,20 @@
               </select>
           </li>
     	    <li class="list-group-item"><strong>Montant</strong> :
-              <input type="number" name="price" id="price" min="1" max="2500" value="{{old('price')}}" step="any"> H.T
+              <input type="number" name="price" id="price" min="1" max="100000" value="{{old('price')}}" step="any"> H.T
               @if($errors->has('price'))
               <span class="error" style="color : red;">
               {{$errors->first('price')}}
               </span>
               @endif
+          </li>
+
+          <li class="list-group-item list-input"><strong>Etalement</strong> :
+              <button class="add_form_field btn btn-outline-danger btn-sm">Ajouter &nbsp; <span style="font-size:16px; font-weight:bold;"></span></button>
+              <div class="form-control">
+                <input name=event[] type=number value="value" >
+                <input name=event[] type="date" value="start_date" class="start_date">
+              </div>
           </li>
 
     	    <li class="list-group-item"><strong>Organisme</strong> : 
@@ -249,6 +257,34 @@
 </form>
 
 </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+<script>
+$(document).ready(function() {
+    var max_fields      = 10;
+    var wrapper         = $(".list-input"); 
+    var add_button      = $(".add_form_field"); 
+    
+    var x = 1; 
+    $(add_button).click(function(e){ 
+        e.preventDefault();
+        if(x < max_fields){ 
+            x++; 
+            $(wrapper).append('<div class="form-control"><input name=event[] type="number" value="value"> <input name=event[] type="date" value="started_at"><a href="#" class="delete"><i class="fa fa-times"></i></a></div>'); //add input box
+        }
+    else
+    {
+    alert('Vous avez atteins la limite')
+    }
+    });
+    
+    $(wrapper).on("click",".delete", function(e){ 
+        e.preventDefault(); $(this).parent('div').remove(); x--;
+    })
+});
+</script>
+
 
 
 

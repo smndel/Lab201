@@ -15,9 +15,11 @@ class CreateEventsTable extends Migration
     {
         Schema::create('events', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title');
+            $table->integer('value');
             $table->date('start_date');
             $table->date('end_date');
+            $table->unsignedInteger('applicant_id')->nullable(); 
+            $table->foreign('applicant_id')->references('id')->on('applicants')->onDelete('CASCADE');
             $table->timestamps();
             });
     }

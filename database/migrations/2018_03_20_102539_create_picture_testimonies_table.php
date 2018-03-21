@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePictureApplicantsTable extends Migration
+class CreatePictureTestimoniesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreatePictureApplicantsTable extends Migration
      */
     public function up()
     {
-        Schema::create('picture_applicants', function (Blueprint $table) {
+        Schema::create('picture_testimonies', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title', 100)->nullable(); //VARCHAR 100
             $table->string('link', 100); //VARCHAR 100
-            $table->unsignedInteger('applicant_id');
-            $table->foreign('applicant_id')->references('id')->on('applicants')->onDelete('cascade');
+            $table->unsignedInteger('testimony_id');
+            $table->foreign('testimony_id')->references('id')->on('testimonies')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class CreatePictureApplicantsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('picture_applicants');
+        Schema::dropIfExists('picture_testimonies');
     }
 }

@@ -16,8 +16,8 @@
 <div class="card col-md-8 mx-auto">
   	<div class="jumbotron vertical-center">
         <div class="text-center">
-            @if(count($testimony->applicant->picture)>0)
-            <img class="img-thumbnail " src="{{url('images', $testimony->applicant->picture->link)}}" style="width: auto"><br>
+            @if(count($testimony->picture)>0)
+            <img class="img-thumbnail " src="{{url('images', $testimony->picture->link)}}" style="width: auto"><br>
             @endif    
   	       <h1 class="display-4">{{$testimony->applicant->first_name}} {{$testimony->applicant->last_name}}</h1> 
         </div>

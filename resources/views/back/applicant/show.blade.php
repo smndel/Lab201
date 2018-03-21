@@ -101,7 +101,11 @@
     <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
       <div class="card-body">
         	<li class="list-group-item">
+            @if(isset($applicant->comment))
               {{$applicant->comment->comments}}
+            @else
+            <p>Pas de commentaire</p>
+            @endif
           </li>
       </div>
     </div>

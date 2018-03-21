@@ -20,15 +20,17 @@
                         <li class="nav-item">
                             <a class="nav-link pl-0" href="{{route('calendar')}}"><i class="fa fa-calendar fa-fw"></i> <span class="d-none d-md-inline">Calendrier</span></a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link pl-0" href="{{route('accreditation.index')}}"><i class="fa fa-calendar fa-fw"></i> <span class="d-none d-md-inline">Accréditations</span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link pl-0" href="{{route('reference.index')}}"><i class="fa fa-calendar fa-fw"></i> <span class="d-none d-md-inline">References</span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link pl-0" href="{{route('testimony.index')}}"><i class="fa fa-calendar fa-fw"></i> <span class="d-none d-md-inline">Témoignages</span></a>
-                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              Divers
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                              <a class="dropdown-item" href="{{route('accreditation.index')}}">Accréditations</a>
+                              <a class="dropdown-item" href="{{route('reference.index')}}">References</a>
+                              <a class="dropdown-item" href="{{route('testimony.index')}}">Témoignages</a>
+                            </div>
+                          </li>
                     </ul>
                 </div>
             </nav>

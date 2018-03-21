@@ -8,6 +8,9 @@ use App\Partner;
 use App\Funding;
 use App\Service;
 use App\Education_level;
+use App\Event;
+use DateTime;
+use Dateinterval;
 
 class ApplicantController extends Controller
 {
@@ -32,10 +35,11 @@ class ApplicantController extends Controller
     {
         $partners = Partner::pluck('name','id')->all();
         $services = Service::pluck('title', 'id')->all();
+        $event = Event::all();
         $education_levels = Education_level::pluck('level', 'id');
         $fundings = Funding::pluck('title', 'id');
 
-        return view('back.applicant.create', ['partners'=>$partners, 'services'=>$services, 'education_levels'=>$education_levels, 'fundings'=>$fundings]);
+        return view('back.applicant.create', ['partners'=>$partners, 'services'=>$services, 'education_levels'=>$education_levels, 'fundings'=>$fundings, 'event'=>$event]);
     }
 
     /**
@@ -64,6 +68,19 @@ class ApplicantController extends Controller
         $applicant = Applicant::create($request->all());
         $applicant->partners()->attach($request->partners);
         $applicant->services()->attach($request->services);
+    
+        $event = $request->event;
+
+        $event_length = count($event);
+
+        for($i=0; $i<$event_length; $i=$i+2){
+        $applicant->events()->create([
+            'value' => $event[$i],
+            'start_date' => $event[$i+1],
+            'end_date' => $event[$i+1],
+        ]);
+
+        }
 
         $comment = $request->comment;
         $applicant->comment()->create([
@@ -100,8 +117,11 @@ class ApplicantController extends Controller
         $services = Service::pluck('title', 'id')->all();
         $education_levels = Education_level::pluck('level', 'id');
         $fundings = Funding::pluck('title', 'id');
+        $events_value = Event::pluck('applicant_id', 'value');
+        $events_date = Event::pluck('applicant_id', 'start_date');
+        dd($events_date);
 
-        return view('back.applicant.edit', ['partners'=>$partners, 'services'=>$services, 'education_levels'=>$education_levels, 'fundings'=>$fundings, 'applicant'=>$applicant]);   
+        return view('back.applicant.edit', ['partners'=>$partners, 'services'=>$services, 'education_levels'=>$education_levels, 'fundings'=>$fundings, 'applicant'=>$applicant, 'events'=>$events]);   
     }
 
     /**
@@ -113,6 +133,7 @@ class ApplicantController extends Controller
      */
     public function update(Request $request, $id)
     {
+
         $this->validate($request,
         [
             'last_name'     => 'required|string',
@@ -137,6 +158,17 @@ class ApplicantController extends Controller
             'comments' => $comment,
         ]);
 
+        $event = $request->event;
+
+        $event_length = count($event);
+
+        for($i=0; $i<$event_length; $i=$i+2){
+        $applicant->events()->update([
+            'value' => $event[$i],
+            'start_date' => $event[$i+1],
+            'end_date' => $event[$i+1],
+            ]);
+        }
         return redirect()->route('applicant.index')->with('message', 'Bénéficiaire modifié');
     }
 
@@ -227,4 +259,7 @@ class ApplicantController extends Controller
         
         echo json_encode($json_data);
     }
+
+
+ 
 }

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Testimony extends Model
 {
     protected $fillable = [
-		'testimony', 'applicant_id',
+		'testimony', 'applicant_id', 'statut'
 	];
 
 	public function applicant(){
@@ -15,7 +15,7 @@ class Testimony extends Model
    }
 
    public function picture(){
-   		return $this->belongsTo(Applicant::class);
+   		return $this->hasOne(Picture_testimonies::class);
    }
 
 }

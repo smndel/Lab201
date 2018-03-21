@@ -29,8 +29,10 @@ class TestimonyController extends Controller
     public function create()
     {
         $applicants = Applicant::all();
+        $testimonies = Testimony::all();
+        $present_id = Testimony::pluck('applicant_id')->toArray();
 
-        return view('back.testimony.create',['applicants' => $applicants]);
+        return view('back.testimony.create', ['testimonies' => $testimonies, 'applicants'=>$applicants, 'present_id' => $present_id]);
     }
 
     /**
@@ -62,6 +64,8 @@ class TestimonyController extends Controller
         ]);
         }
 
+
+
         return redirect()->route('testimony.index')->with('message', 'Témoignage enregistré');
     }
 
@@ -86,7 +90,9 @@ class TestimonyController extends Controller
      */
     public function edit($id)
     {
-        //
+        $testimony = Testimony::find($id);
+
+        return view('back.testimony.edit', ['testimony' => $testimony]);
     }
 
     /**
@@ -98,7 +104,31 @@ class TestimonyController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,
+        [
+            'testimony'  => 'sometimes|nullable',
+            'picture'  => 'image|mimes:jpg,png,jpeg',
+        ]);
+
+
+        $testimony = Testimony::find($id);
+        $testimony->update($request->all());
+
+        $image = $request->file('picture');      
+
+        if(!empty($image)){
+        //Suppression de l'image si elle existe
+            if(count($testimony->picture)>0){
+                Storage::disk('local')->delete($testimony->picture->link);//Supprime physiquemnt l'image
+                $testimony->picture()->delete();//Supprime l'information en base de données
+            }
+
+        $link = $request->file('picture')->store('./');
+        //Mettre à jour la table picture pour le lien vers l'image dans la base de donnée
+        $testimony->picture()->create(['link' => $link]);
+        }
+
+        return redirect()->route('testimony.index')->with('message', 'Témoignage modifié');
     }
 
     /**

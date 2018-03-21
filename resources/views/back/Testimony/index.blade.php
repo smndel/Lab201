@@ -38,7 +38,7 @@
     <div class="card-header" id="headingOne">
       <h5 class="mb-0">
         <div class="d-flex justify-content-between">
-          <h3>{{$testimony->applicant->first_name}}{{$testimony->applicant->last_name}}</h3>
+          <h3>{{$testimony->applicant->first_name}} {{$testimony->applicant->last_name}}</h3>
           <div class="d-flex justify-content-around">
           <a href="{{route('testimony.show', $testimony->id)}}"><button class="btn btn-success btn-xs"><i class="fa fa-eye text-ligth"></i></button></a>
           <a href="{{route('testimony.edit', $testimony->id)}}"><button class="btn btn-warning btn-xs"><i class="fa fa-edit text-ligth"></i></button></a>
@@ -53,8 +53,8 @@
     </div>
     <div class="row">
       <div class="card-body col-4">
-        @if(isset($testimony->applicant->picture))
-        <img class="img-thumbnail" src="{{url('images', $testimony->applicant->picture->link)}}" style="width: auto">
+        @if(isset($testimony->picture))
+        <img class="img-thumbnail" src="{{url('images', $testimony->picture->link)}}" style="width: auto">
         @else
         @endif
       </div>

@@ -12,10 +12,10 @@ class EventTableSeeder extends Seeder
     public function run()
     {
         $data = [
-         ['title'=>'Finacial forum', 'start_date'=>'2017-10-12', 'end_date'=>'2017-09-15'],
-         ['title'=>'Devtalk', 'start_date'=>'2017-10-13', 'end_date'=>'2017-09-25'],
-         ['title'=>'Super Event', 'start_date'=>'2017-09-23', 'end_date'=>'2017-09-24'],
-         ['title'=>'wtf event', 'start_date'=>'2017-09-19', 'end_date'=>'2017-09-27'],
+         ['value'=>'2300', 'start_date'=>'2017-10-12', 'end_date'=>'2017-09-15'],
+         ['value'=>'200', 'start_date'=>'2017-10-13', 'end_date'=>'2017-09-25'],
+         ['value'=>'3000', 'start_date'=>'2017-09-23', 'end_date'=>'2017-09-24'],
+         ['value'=>'230', 'start_date'=>'2017-09-19', 'end_date'=>'2017-09-27'],
         ];
         \DB::table('events')->insert($data);
     }

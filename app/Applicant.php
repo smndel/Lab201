@@ -44,7 +44,7 @@ class Applicant extends Model
         return $this->HasOne(Testimony::class);
     }
 
-    public function picture(){
-        return $this->hasOne(Picture_applicants::class);
+    public function events(){
+        return $this->HasMany(Event::class);
     }
 }

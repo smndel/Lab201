@@ -38,7 +38,7 @@
     <div class="card-header" id="headingOne">
       <h5 class="mb-0">
         <div class="d-flex justify-content-between">
-          <h3>{{$reference->title}}</h3>
+          <h3>{{$reference->company}}</h3>
           <div class="d-flex justify-content-around">
           <a href="{{route('reference.show', $reference->id)}}"><button class="btn btn-success btn-xs"><i class="fa fa-eye text-ligth"></i></button></a>
           <a href="{{route('reference.edit', $reference->id)}}"><button class="btn btn-warning btn-xs"><i class="fa fa-edit text-ligth"></i></button></a>

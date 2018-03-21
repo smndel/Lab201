@@ -12,8 +12,10 @@
         <!-- Styles -->
         <!-- retourne le lien vers la feuille de style qui se trouve dans le dossier public -->
         <link href="{{asset('css/app.css')}}" rel="stylesheet">
+        <link href="{{URL::asset('css/custom.css')}}" rel="stylesheet">
     </head>
     <body>
+    @include('partials.header')
     <div class="container" id="myApp">
         @include('partials.menu')
         <div class="row">
