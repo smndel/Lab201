@@ -11,6 +11,8 @@ use App\Education_level;
 use App\Event;
 use DateTime;
 use Dateinterval;
+use Storage;
+use App\Http\Requests\ApplicantRequest;
 
 class ApplicantController extends Controller
 {
@@ -39,7 +41,13 @@ class ApplicantController extends Controller
         $education_levels = Education_level::pluck('level', 'id');
         $fundings = Funding::pluck('title', 'id');
 
-        return view('back.applicant.create', ['partners'=>$partners, 'services'=>$services, 'education_levels'=>$education_levels, 'fundings'=>$fundings, 'event'=>$event]);
+        return view('back.applicant.create', [
+            'partners'          => $partners, 
+            'services'          => $services, 
+            'education_levels'  => $education_levels, 
+            'fundings'          => $fundings, 
+            'event'             => $event
+        ]);
     }
 
     /**
@@ -48,44 +56,36 @@ class ApplicantController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ApplicantRequest $request)
     {
-
-        $this->validate($request,
-        [
-            'last_name'     => 'required|string',
-            'first_name'    => 'required|string',
-            'phone_number'  => 'sometimes|nullable|string',
-            'mail'          => 'sometimes|nullable|email',
-            'company'       => 'sometimes|nullable|string',
-            'career'        => 'sometimes|nullable|string',
-            'contact'       => 'sometimes|nullable|date',
-            'experience'    => 'sometimes|nullable|integer',
-            'price'         => 'sometimes|nullable|regex:/^\d*(\.\d{1,2})?$/',
-            'comment'       => 'sometimes|nullable',
-        ]);
-
         $applicant = Applicant::create($request->all());
         $applicant->partners()->attach($request->partners);
         $applicant->services()->attach($request->services);
-    
+        $comment = $request->comment;
+        $applicant->comment()->create([
+            'comments' => $comment,
+        ]);
+
         $event = $request->event;
+        foreach($event as $key=>$value)
+        {
+            if($value==null){ 
+                unset($event[$key]); 
+            }
+        }
 
         $event_length = count($event);
 
         for($i=0; $i<$event_length; $i=$i+2){
         $applicant->events()->create([
-            'value' => $event[$i],
-            'start_date' => $event[$i+1],
-            'end_date' => $event[$i+1],
+            'value'         => $event[$i],
+            'start_date'    => $event[$i+1],
+            'end_date'      => $event[$i+1],
         ]);
 
         }
 
-        $comment = $request->comment;
-        $applicant->comment()->create([
-            'comments' => $comment,
-        ]);
+        
 
         return redirect()->route('applicant.index')->with('message', 'Bénéficiaire enregistré');
     }
@@ -117,11 +117,16 @@ class ApplicantController extends Controller
         $services = Service::pluck('title', 'id')->all();
         $education_levels = Education_level::pluck('level', 'id');
         $fundings = Funding::pluck('title', 'id');
-        $events_value = Event::pluck('applicant_id', 'value');
-        $events_date = Event::pluck('applicant_id', 'start_date');
-        dd($events_date);
+        $events = Event::all()->where('applicant_id', $id);
 
-        return view('back.applicant.edit', ['partners'=>$partners, 'services'=>$services, 'education_levels'=>$education_levels, 'fundings'=>$fundings, 'applicant'=>$applicant, 'events'=>$events]);   
+        return view('back.applicant.edit', [
+            'partners'          => $partners, 
+            'services'          => $services, 
+            'education_levels'  => $education_levels, 
+            'fundings'          => $fundings, 
+            'applicant'         => $applicant, 
+            'events'            => $events
+        ]);   
     }
 
     /**
@@ -131,23 +136,8 @@ class ApplicantController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ApplicantRequest $request, $id)
     {
-
-        $this->validate($request,
-        [
-            'last_name'     => 'required|string',
-            'first_name'    => 'required|string',
-            'phone_number'  => 'sometimes|nullable|string',
-            'mail'          => 'sometimes|nullable|email',
-            'company'       => 'sometimes|nullable|string',
-            'career'        => 'sometimes|nullable|string',
-            'contact'       => 'sometimes|nullable|date',
-            'experience'    => 'sometimes|nullable|integer',
-            'price'         => 'sometimes|nullable|regex:/^\d*(\.\d{1,2})?$/',
-            'comment'       => 'sometimes|nullable',
-        ]);
-
         $applicant = Applicant::find($id);
         $applicant->update($request->all());
         $applicant->partners()->sync($request->partners);
@@ -158,17 +148,31 @@ class ApplicantController extends Controller
             'comments' => $comment,
         ]);
 
+
         $event = $request->event;
+        $applicant = Applicant::find($id);
+        $applicant->events()->delete();
+        
+        if(isset($event)){
+        $event = $request->event;
+
+        foreach($event as $key=>$value)
+        {
+            if($value==null){ 
+                unset($event[$key]); 
+            }
+        }
 
         $event_length = count($event);
 
-        for($i=0; $i<$event_length; $i=$i+2){
-        $applicant->events()->update([
-            'value' => $event[$i],
-            'start_date' => $event[$i+1],
-            'end_date' => $event[$i+1],
-            ]);
+            for($i=0; $i<$event_length; $i=$i+2){
+                $applicant->events()->create([
+                    'value'      => $event[$i],
+                    'start_date' => $event[$i+1],
+                ]);
+            }
         }
+
         return redirect()->route('applicant.index')->with('message', 'Bénéficiaire modifié');
     }
 

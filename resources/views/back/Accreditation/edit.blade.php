@@ -8,7 +8,7 @@
         <li class="breadcrumb-item">
           <a href="{{route('admin.index')}}">Dashboard</a>
         </li>
-        <li class="breadcrumb-item active"><a href="{{route('accreditation.index')}}">Les Accréditations</a>/Nouvelle Accréditation</li>
+        <li class="breadcrumb-item active"><a href="{{route('accreditation.index')}}">Les Accréditations</a> / Modifier Accréditation</li>
       </ol>
       
   </div>
@@ -20,7 +20,7 @@
 
 <div class="card col-md-8 mx-auto">
       <div class="jumbotron">
-        <h1 class="display-4">Ajouter une Accréditation</h1>
+        <h1 class="display-4">Modifier une Accréditation</h1>
       </div>
 
 

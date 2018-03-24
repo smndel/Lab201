@@ -156,18 +156,18 @@
           
 
             <li class="list-group-item"><strong>Accepté</strong> : 
-              <select class="form-control" id="accepted" name="accepted">       
+              <select class="form-control" id="accepted" name="accepted">
+              <option value="non" @if(old('accepted') == 'non') {{'selected'}} @endif>Non</option>       
               <option value="oui" @if(old('accepted') == 'oui') {{'selected'}} @endif>Oui</option>
               <option value="en_cours" @if(old('accepted') == 'en_cours') {{'selected'}} @endif>En cours</option>
-              <option value="non" @if(old('accepted') == 'non') {{'selected'}} @endif>Non</option>
               </select>
             </li>
 
     	    <li class="list-group-item"><strong>Financé</strong> : 
-              <select class="form-control" id="funded" name="funded">       
+              <select class="form-control" id="funded" name="funded"> 
+              <option value="non" @if(old('funded') == 'non') {{'selected'}} @endif>Non</option>      
               <option value="oui" @if(old('funded') == 'oui') {{'selected'}} @endif>Oui</option>
               <option value="en_cours" @if(old('funded') == 'en_cours') {{'selected'}} @endif>En cours</option>
-              <option value="non" @if(old('funded') == 'non') {{'selected'}} @endif>Non</option>
               </select>
           </li>
     	    <li class="list-group-item"><strong>Montant</strong> :

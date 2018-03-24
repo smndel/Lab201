@@ -59,6 +59,14 @@
       <div class="card-body col-8">
       <li class="list-group-item"><strong>Nom</strong> : {{$partner->name}}</li>
       <li class="list-group-item"><strong>Bio</strong> : {{$partner->bio}}</li>
+      <li class="list-group-item"><strong>Poste</strong> : 
+          @if(($partner->position)== 'director')
+          Directeur
+          @else
+          Collaborateur
+          @endif
+      </li>
+      <li class="list-group-item"><strong>Poste</strong> : {{$partner->statut}}</li>
       </div>
     </div>  
   </div>

@@ -11,6 +11,7 @@ class Picture_actualities extends Model
 	];
 	
      public function actuality(){
+     	
    		return $this->belongsTo(Actuality::class);
    }
 }

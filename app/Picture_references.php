@@ -11,6 +11,7 @@ class Picture_references extends Model
 	];
 
 	public function reference(){
+		
    		return $this->belongsTo(Reference::class);
    }
 }

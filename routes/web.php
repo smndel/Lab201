@@ -14,24 +14,16 @@
 Route::get('/', 'FrontController@index')->name('index');
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-Route::resource('admin', 'AfogecController')->middleware('auth');
-
-Route::resource('applicant', 'ApplicantController')->middleware('auth');
-Route::post('/data/applicant', 'ApplicantController@getApplicants')->name('ApplicantProcessing');
-
-Route::resource('partner', 'PartnerController')->middleware('auth');
-
-Route::resource('service', 'ServiceController')->middleware('auth');
-
-Route::resource('actuality', 'ActualityController')->middleware('auth');
-
-Route::resource('accreditation', 'AccreditationController')->middleware('auth');
-
-Route::resource('reference', 'ReferenceController')->middleware('auth');
-
-Route::resource('testimony', 'TestimonyController')->middleware('auth');
-
-Route::get('events', 'EventController@index')->name('calendar');
+Route::middleware(['auth'])->group(
+	function(){
+		Route::resource('partner', 'PartnerController');
+		Route::resource('service', 'ServiceController');
+		Route::resource('actuality', 'ActualityController');
+		Route::resource('accreditation', 'AccreditationController');
+		Route::resource('reference', 'ReferenceController');
+		Route::resource('testimony', 'TestimonyController');
+		Route::get('events', 'EventController@index')->name('calendar');
+		Route::post('/data/applicant', 'ApplicantController@getApplicants')->name('ApplicantProcessing');
+		Route::resource('applicant', 'ApplicantController');
+		Route::get('admin', 'BackController@index')->name('admin.index');
+});

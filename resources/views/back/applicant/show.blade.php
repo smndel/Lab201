@@ -36,9 +36,20 @@
 	    <li class="list-group-item"><strong>Entreprise</strong> : {{$applicant->company}}</li>
 	    <li class="list-group-item"><strong>Poste</strong> : {{$applicant->career}}</li>
 	    <li class="list-group-item"><strong>Premier contact</strong> : {{Carbon\Carbon::parse($applicant->contact)->format('d.m.Y')}}</li>
-	    <li class="list-group-item"><strong>Expérience</strong> : {{$applicant->experience}} ans</li>
-	    <li class="list-group-item"><strong>Niveau d'étude</strong> : {{$applicant->education_level->level}}</li> 
 
+	    <li class="list-group-item"><strong>Expérience</strong> : 
+      @if(isset($applicant->experience))
+        {{$applicant->experience}} ans>
+      @else
+        
+      @endif
+      </li>
+
+      @if(isset($applicant->education_level))
+	    <li class="list-group-item"><strong>Niveau d'étude</strong> : {{$applicant->education_level->level}}</li> 
+      @else
+      <li class="list-group-item"><strong>Niveau d'étude</strong> : </li>
+      @endif
       </div>
     </div>
   </div>
@@ -72,20 +83,45 @@
 
       <li class="list-group-item"><strong>Accepté</strong> : 
       @if($applicant->accepted=='en_cours')
-      En cours
+        En cours
       @else
-      {{$applicant->accepted}}
+        {{$applicant->accepted}}
       @endif
       </li>
 	    <li class="list-group-item"><strong>Financé</strong> : 
-      @if($applicant->funded=='en_cours')En cours
+      @if($applicant->funded=='en_cours')
+        En cours
       @else
-      {{$applicant->funded}}
+        {{$applicant->funded}}
       @endif
       </li>
-	    <li class="list-group-item"><strong>Montant</strong> : {{$applicant->price}}</li>
+	    <li class="list-group-item"><strong>Montant</strong> : 
+      @if(isset($applicant->price))
+        {{$applicant->price}} €
+      @else
+      @endif
+      </li>
 
-	    <li class="list-group-item"><strong>Organisme</strong> : {{$applicant->funding->title}}</li>
+      <li class="list-group-item"><strong>Etalement</strong> :
+      @if(count($applicant->events)>0) 
+        <ul>
+      @foreach($applicant->events as $event)
+           <li> Date : {{Carbon\Carbon::parse($event->start_date)->format('d.m.Y')}} / Montant : {{$event->value}} €</li>
+      @endforeach
+        </ul>
+      @else
+        Aucune(s) date(s) de paiements
+      @endif
+      </li>
+      
+	    <li class="list-group-item"><strong>Organisme</strong> : 
+      @if(isset($applicant->funding))
+        {{$applicant->funding->title}}
+      @else
+        
+      @endif
+      </li>
+  
       </div>
     </div>
   </div>
@@ -101,10 +137,10 @@
     <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
       <div class="card-body">
         	<li class="list-group-item">
-            @if(isset($applicant->comment))
-              {{$applicant->comment->comments}}
+            @if(empty($applicant->comment->comments))
+              Pas de commentaire  
             @else
-            <p>Pas de commentaire</p>
+              {{$applicant->comment->comments}}
             @endif
           </li>
       </div>

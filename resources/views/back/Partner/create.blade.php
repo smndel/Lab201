@@ -9,7 +9,7 @@
         <li class="breadcrumb-item">
           <a href="{{route('admin.index')}}">Dashboard</a>
         </li>
-        <li class="breadcrumb-item active"><a href="{{route('partner.index')}}">Les Collaborateurs</a>/ Nouveau Collaborateur</li>
+        <li class="breadcrumb-item active"><a href="{{route('partner.index')}}">Les Collaborateurs</a> / Nouveau Collaborateur</li>
       </ol>
       
   </div>
@@ -47,6 +47,22 @@
               {{$errors->first('bio')}}
               </span>
               @endif
+        </li>
+        <li class="list-group-item"><strong>Poste</strong> :
+              <select class="form-control" id="position" name="position">     
+                  <option value="collaborator" @if(old('position') == 'collaborator') {{'selected'}} @endif>Collaborateur
+                  </option>
+                  <option value="director" @if(old('position') == 'directeur') {{'selected'}} @endif>Directeur
+                  </option>
+              </select>
+        </li>
+        <li class="list-group-item"><strong>Statut</strong> :
+              <select class="form-control" id="poste" name="poste">     
+                  <option value="actif" @if(old('statut') == 'actif') {{'selected'}} @endif>Actif
+                  </option>
+                  <option value="inactif" @if(old('statut') == 'inactif') {{'selected'}} @endif>Inactif
+                  </option>
+              </select>
         </li>
       </div>
     </div>

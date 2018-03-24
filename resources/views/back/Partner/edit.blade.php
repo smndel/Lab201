@@ -48,6 +48,26 @@
               </span>
               @endif
         </li>
+        <li class="list-group-item"><strong>Poste</strong> :
+            <div class="form-group">
+              <select class="form-control" id="position" name="position">     
+                  <option value="collaborator" @if(($partner->position) == 'collaborator') {{'selected'}} @endif>Collaborateur
+                  </option>
+                  <option value="director" @if(($partner->position) == 'director') {{'selected'}} @endif>Directeur
+                  </option>
+              </select>
+            </div>
+        </li>
+        <li class="list-group-item"><strong>Statut</strong> :
+            <div class="form-group">
+              <select class="form-control" id="statut" name="statut">     
+                  <option value="actif" @if($partner->statut) == 'actif') {{'selected'}} @endif>Actif
+                  </option>
+                  <option value="inactif" @if($partner->statut) == 'inactif') {{'selected'}} @endif>Inactif
+                  </option>
+              </select>
+            </div>
+        </li>
       </div>
     </div>
 
@@ -74,7 +94,7 @@
                 <label class="control-label" >{{$title}}</label><br>
               @empty
               @endforelse
-            </li>
+          </li>
       </div>
   </div>
 

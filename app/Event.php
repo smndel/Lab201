@@ -10,6 +10,7 @@ class Event extends Model
     	'value','start_date','end_date', 'applicant_id'];
 
     public function applicant(){
+    	
    		return $this->belongsTo(Applicant::class);
    }
 

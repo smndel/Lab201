@@ -36,14 +36,14 @@ class EventController extends Controller
                     null,
                     // Add color and link on event
                  [
-                     'color' => random_color(),
-                     'url' => route('applicant.show', ''.$value->applicant_id.'')
+                     'color'    => random_color(),
+                     'url'      => route('applicant.show', ''.$value->applicant_id.'')
                  ]
                 );
             }
         }
         $calendar = Calendar::addEvents($events);
-        return view('back.fullcalender', compact('calendar'));
+        return view('back.calendar.fullcalender', compact('calendar'));
     }
 }
 

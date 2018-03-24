@@ -3,7 +3,13 @@
                 <div class="collapse navbar-collapse">
                     <ul class="flex-md-column flex-row navbar-nav w-100 justify-content-between" style="font-size:20px">
                         <li class="nav-item">
-                            <a class="nav-link pl-0 text-nowrap" href="{{route('admin.index')}}"><i class="fa fa-bullseye fa-fw"></i> <span class="font-weight-bold">AFOGEC</span></a>
+                            <a class="nav-link pl-0 text-nowrap" href="{{route('index')}}"><i class="fa fa-bullseye fa-fw"></i> <span class="font-weight-bold">AFOGEC</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link pl-0" href="{{route('applicant.index')}}"><i class="fa fa-list fa-fw"></i> <span class="d-none d-md-inline">Bénéficiaires</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link pl-0" href="{{route('calendar')}}"><i class="fa fa-calendar fa-fw"></i> <span class="d-none d-md-inline">Calendrier</span></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link pl-0" href="{{route('actuality.index')}}"><i class="fa fa-heart fa-fw"></i> <span class="d-none d-md-inline">Actualités</span></a>
@@ -14,13 +20,6 @@
                         <li class="nav-item">
                             <a class="nav-link pl-0" href="{{route('partner.index')}}"><i class="fa fa-star fa-fw"></i> <span class="d-none d-md-inline">Collaborateurs</span></a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link pl-0" href="{{route('applicant.index')}}"><i class="fa fa-list fa-fw"></i> <span class="d-none d-md-inline">Bénéficiaires</span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link pl-0" href="{{route('calendar')}}"><i class="fa fa-calendar fa-fw"></i> <span class="d-none d-md-inline">Calendrier</span></a>
-                        </li>
-
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                               Divers

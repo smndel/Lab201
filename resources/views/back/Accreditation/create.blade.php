@@ -9,7 +9,7 @@
         <li class="breadcrumb-item">
           <a href="{{route('admin.index')}}">Dashboard</a>
         </li>
-        <li class="breadcrumb-item active"><a href="{{route('accreditation.index')}}">Les Accréditations</a>/Nouvelle Accréditation</li>
+        <li class="breadcrumb-item active"><a href="{{route('accreditation.index')}}">Les Accréditations</a> / Nouvelle Accréditation</li>
       </ol>
       
   </div>
@@ -62,11 +62,6 @@
       </div>
     </div>
 
-<div class="container1">
-    <button class="add_form_field">Add New Field &nbsp; <span style="font-size:16px; font-weight:bold;">+ </span></button>
-    <div><input type="text" name="mytext[]"></div>
-</div>
-  
     <div class="form-group">
       <button type="submit" class="btn btn-success btn-lg btn-block" href="{{route('accreditation.store')}}">Valider
       </button>

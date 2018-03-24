@@ -9,7 +9,7 @@
         <li class="breadcrumb-item">
           <a href="{{route('admin.index')}}">Dashboard</a>
         </li>
-        <li class="breadcrumb-item active"><a href="{{route('actuality.index')}}">Les Actualités</a>/Nouvelle Actualité</li>
+        <li class="breadcrumb-item active"><a href="{{route('actuality.index')}}">Les Actualités</a> / Nouvelle Actualité</li>
       </ol>
       
   </div>

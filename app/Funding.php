@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Funding extends Model
 {
-     public function Applicant(){
+     public function applicant(){
+     	
    		return $this->belongsTo(Applicant::class);
    }
 }

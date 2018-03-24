@@ -8,7 +8,7 @@
         <li class="breadcrumb-item">
           <a href="{{route('admin.index')}}">Dashboard</a>
         </li>
-        <li class="breadcrumb-item active"><a href="{{route('actuality.index')}}">Les Actualités</a>/Nouvelle Actualité</li>
+        <li class="breadcrumb-item active"><a href="{{route('actuality.index')}}">Les Actualités</a> / Modifier Actualité</li>
       </ol>
       
   </div>
@@ -20,7 +20,7 @@
 
 <div class="card col-md-8 mx-auto">
       <div class="jumbotron">
-        <h1 class="display-4">Rédiger une nouvelle actualité</h1>
+        <h1 class="display-4">Modifier une actualité</h1>
       </div>
 
 
@@ -32,7 +32,7 @@
     </div>
 
     <div class="card-body">
-      <li class="list-group-item"><strong>Title</strong> :
+      <li class="list-group-item"><strong>Titre</strong> :
           <input type="text" class="form-control" placeholder="Titre" id="title" name="title" value="{{$actuality->title}}">
           @if($errors->has('title'))
           <span class="error" style="color : red;">

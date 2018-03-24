@@ -20,6 +20,7 @@ class Service extends Model
     }
 
     public function applicants(){
+
     	return $this->belongsToMany(Applicant::class);
     }
 }

@@ -11,6 +11,7 @@ class Picture_services extends Model
 	];
 	
      public function services(){
+     	
    		return $this->belongsToMany(Service::class);
    }
 }

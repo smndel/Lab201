@@ -1,0 +1,560 @@
+.share_box{
+	position:fixed;
+	width:50px;
+	height: 200px;
+	top:40%;
+	right:0%;
+	background:#eb9000;
+	padding:15px;
+	-webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    z-index: 1;
+    transition-property: background-color; 
+    transition-duration: 0.5s;
+}
+
+.share_box:hover{
+	background:#08374b;
+}
+
+
+.share_box p{
+ 	writing-mode: vertical-rl;
+  	text-orientation: sideways;
+  	color: white;
+  	margin-right: 10vh;
+  	font-family: 'Dosis', sans-serif;
+
+}
+
+.share_box a{
+	 text-decoration: none;
+}
+
+
+
+
+/*------------------------------------------------*/
+/*------------------------------------------------*/
+
+body{
+	background-color: #fff;
+}
+
+/*STYLE MENU*/
+
+#navbar{
+	background-color: #fff;
+}
+
+#navbarSupportedContent{
+	font-family: 'Dosis', sans-serif;
+	font-weight: medium;
+	font-size: 25px;
+	margin-top: 5vh;
+}
+
+#navbarSupportedContent a{
+	color: #133447;
+	padding-top: 0;
+	padding-bottom: 0;
+	transition-property: color; 
+    transition-duration: 0.5s;
+}
+
+#navbarSupportedContent a:hover{
+	color: #E09334;
+	padding-top: 0;
+	padding-bottom: 0;
+}
+
+
+#navbarSupportedContent ul {
+	width : 100%;
+}
+
+.custom-toggler.navbar-toggler {
+    border-color: white;
+}
+.custom-toggler .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,102,203, 0.7)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+
+
+/*------------------------------------------------*/
+/*------------------------------------------------*/
+/*Style Header*/
+.header {
+	font-family: Arial;
+}
+
+#arrow_button_top{
+	margin-left: 20px;
+}
+
+.my-primary{
+  	color: white ;
+  	background-color: #133447;
+  	transition-property: background-color; 
+    transition-duration: 0.5s;
+    font-size: 25px;
+    margin-top: 5vh;
+    font-family: 'Dosis', sans-serif;
+    padding: 1vh 2vw 1vh 2vw;
+}
+
+.my-primary:hover{
+	background-color: #E09334;
+}
+
+.header__right_social{
+	width: 30px;
+	padding-top: 1vh;
+	margin-left: 10vw;
+}
+
+#header__left__address{
+	color:black;
+	text-align: right;
+	box-shadow: 1px 1px 12px #555;
+	display: flex;
+  	align-items: center;
+  	justify-content: center;
+  	font-size: 15px;
+}
+
+#header__left__address p{
+	margin-bottom: 0;
+	padding : 15px;
+}
+
+#header__left{
+	display: flex;
+  	align-items: center;
+
+}
+
+#header__logo{
+	padding-top: 5vh;
+}
+
+
+
+/*------------------------------------------------*/
+/*------------------------------------------------*/
+/* INDEX MAIN STYLE */
+/*------------------------------------------------*/
+/*------------------------------------------------*/
+/*MAIN TOP*/
+
+#main__top{
+	background-image: url('/images_front/fondbanniere.png');
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+/*------------------------------------------------*/
+
+#main__top__linkService{
+	margin-top: 4vh;
+}
+
+#main__top__linkService{ 
+	 background: rgba(255, 255, 255, 0.3);
+}
+
+#main__top__linkService h1{
+	font-family: 'Futura-CondensedMedium';
+	text-align: center;
+	font-size: 40px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	font-weight: medium;
+}
+
+#main__top__linkService img{
+	width : 70px;
+	text-align: center;
+}
+
+#main__top__linkService p{
+	font-family: 'Dosis', sans-serif;
+	font-size: 20px;
+	text-align: center;
+}
+
+#main__top__linkService .card{
+	background: none;
+	border: none;
+}
+
+#main__top__linkService__card{
+	margin-top: 3vh;
+	margin-bottom: 3vh;
+}
+
+#img_bc{
+	background-image: url('/images_front/bilan.png');
+	height: 110px;
+	width: 100px;
+	background-repeat: no-repeat;
+	transition-property: background-image; 
+    transition-duration: 1s;
+}
+
+#img_bc:hover{
+	background-image: url('/images_front/bilanhover.png');
+}
+
+#img_vae{
+	background-image: url('/images_front/vae.png');
+	height: 110px;
+	width: 100px;
+	background-repeat: no-repeat;
+	transition-property: background-image; 
+    transition-duration: 1s;
+}
+
+#img_vae:hover{
+	background-image: url('/images_front/vaehover.png');
+}
+
+#img_retraite{
+	background-image: url('/images_front/retraite.png');
+	height: 110px;
+	width: 100px;
+	background-repeat: no-repeat;
+	transition-property: background-image; 
+    transition-duration: 1s;
+}
+
+#img_retraite:hover{
+	background-image: url('/images_front/retraitehover.png');
+}
+/*------------------------------------------------*/
+
+#main__presentation{
+	text-align: center;
+	font-family: 'Dosis', sans-serif;
+	box-shadow: 1px 1px 12px #555;
+	margin-top: 3vh;
+	background-color: #fff;
+}
+
+hr{
+	clear:both;
+ 	display:block;
+	width: 70%;
+	height: 1px;
+	background-color: black;
+	border: none;
+	margin-top: 1vh;
+}
+
+#main__presentation h2{
+	margin-top: 3vh;
+	font-size: 30px;
+	font-weight: medium;
+}
+
+.my-secondary{
+  	color: white ;
+  	background-color: #FFB239;
+  	margin-bottom: 2vh;
+  	margin-top: 2vh;
+  	transition-property: background-color; 
+    transition-duration: 0.5s;
+    padding: 1vh 4vw 1vh 4vw;
+    font-size: 20px;
+}
+
+.my-secondary:hover{
+  	background-color: #133447;
+}
+
+
+#main__presentation p{
+	font-size: 20px;
+	margin-top: 5vh;
+	padding: 0 2vw 0 2vw;
+	line-height: 1.5;
+	text-align: justify;
+    -moz-text-align-last: center;
+    text-align-last: center;
+}
+
+/*------------------------------------------------*/
+
+#main__top__bottom__director{
+	margin-top: 3vh;
+}
+
+
+.director_image img{
+	width: 100%;
+	height: 100%;
+}
+
+#main__top__bottom__director p{
+	font-size: 20px;
+	padding-top: 3vh;
+	padding-bottom: 3vh;
+	text-align: justify;
+}
+
+.quote_open{
+	float:left;
+}
+
+.quote_close{
+	float: right;
+}
+
+#main__top__bottom__director h3{
+	text-align: center;
+	margin-top: 2vh;
+	font-size: 25px;
+	font-family: 'Dosis', sans-serif;
+}
+
+#diretor_text{
+	background: url('/images_front/guillemets-directrice-ouverture.png') no-repeat left top, 
+	url('/images_front/guillemets-directrice-fermeture.png') no-repeat right bottom;
+}
+
+/*------------------------------------------------*/
+
+#carousel_actualities .card{
+	font-family: 'Dosis', sans-serif;
+	background-color: #B9C894;
+	color: white;
+	margin-top: 3vh;
+	padding: 2vh;
+	height: 300px;
+	min-height: 400px;
+	border-radius: 20px;
+	font-size: 15px;
+	text-align: justify;
+}
+
+#carousel_actualities .card img{
+	margin-right: 5vw;	
+}
+
+#carousel_actualities .card h5{
+	font-size: 35px;
+	text-decoration: underline;
+	padding-bottom: 1vh;	
+}
+
+#carousel_actualities .card h6{
+	font-size: 30px;	
+}
+
+#carousel_actualities .card a{
+	text-decoration: underline;
+	color: white;
+	font-size: 20px;
+	text-align: right;
+}
+
+#carousel_actualities .card p{
+	font-size: 20px;
+}
+
+#carousel_actualities .fa-chevron-right{
+	color: white;
+}
+/*FIN MAIN TOP*/
+/*------------------------------------------------*/
+/*------------------------------------------------*/
+/* MAIN MIDDLE */
+#main__middle__top{
+	background-color: #315258;
+	padding-top: 5vh;
+	padding-bottom: 5vh;
+	margin-top: 3vh;
+}
+
+#main__middle__top figcaption{
+	color: white;
+	text-align: center;
+	font-size: 20px;
+}
+
+#main__middle__top{
+	text-align: center;
+	width: 100%;
+	height: 100%;
+}
+
+.counter{
+	font-size : 50px;
+	font-weight: bold;
+}
+/*------------------------------------------------*/
+
+#main__middle__bottom__testimony{
+	margin-top: 3vh;
+	background-color: transparent;
+	font-family: 'Dosis', sans-serif;
+	line-height: 2;
+}
+
+#main__middle__bottom__testimony img{
+	position: absolute;
+    right: 0px;
+    top: 0px;
+    z-index: -1;
+    opacity: 0.5;
+}
+
+#main__middle__bottom__testimony p{
+	font-size: 20px;
+	padding-top: 1vh;
+	padding-bottom: 3vh;
+	text-align: justify;
+
+}
+
+#main__middle__bottom__testimony h3{
+	text-align: center;
+	margin-top: 2vh;
+	font-size: 20px;
+	font-weight: bold;
+	text-align: left;
+	line-height: 2;
+}
+
+#testimony_text{
+	background: url('/images_front/guillemets-temoignage-ouverture.png') no-repeat left top, 
+	url('/images_front/guillemets-temoignage-fermeture.png') no-repeat right bottom;
+}
+
+
+#main__middle__bottom__docmuentation button{
+	width: 80%;
+	padding-top: 2vh;
+	padding-bottom: 2vh;
+}
+
+#main__middle__bottom__docmuentation h3{
+	font-size: 30px;
+	font-family: 'Dosis', sans-serif;
+}
+
+/*FIN MAIN MIDDLE*/
+/*------------------------------------------------*/
+/*------------------------------------------------*/
+/* MAIN BOTTOM */
+
+#main__bottom__top h2{
+	width: 100%;
+	text-align: center;
+	font-family: 'Dosis', sans-serif;
+	margin-top: 10vh;
+}
+
+#carousel_accreditations{
+	width: 100%;
+}
+
+#carousel_accreditations img{
+	width: 100%;
+}
+
+.fa-chevron-left{
+	color: #93c022;
+	margin-right: 20vw;
+}
+
+.fa-chevron-right{
+	color: #93c022;
+	margin-left: 20vw;
+}
+
+/*------------------------------------------------*/
+
+#main-bottom-middle{
+	margin-top: 10vh;
+}
+
+#main-bottom-middle h2{
+	width: 100%;
+	text-align: center;
+	font-family: 'Dosis', sans-serif;
+}
+
+#main-bottom-middle p{
+	width: 100%;
+	text-align: center;
+	margin-bottom: 0;
+	font-size: 20px;
+}
+
+
+/*------------------------------------------------*/
+
+#map{
+	height: 500px;
+	width: 100%;
+}
+
+/*------------------------------------------------*/
+
+#main__bottom__bottom h2{
+	width: 100%;
+	text-align: center;
+	font-family: 'Dosis', sans-serif;
+	margin-top: 10vh;
+}
+
+#carousel_references{
+	width: 100%;
+}
+
+#carousel_references img{
+	width: 100%;
+}
+
+/*FIN MAIN BOTTOM*/
+/*------------------------------------------------*/
+/*------------------------------------------------*/
+/* FOOTER*/
+#footer{
+	background-color: #08374b;
+	margin-top: 10vh;
+	color: white;
+	text-align: center;
+	padding-bottom: 8vh;
+}
+
+#linkedin_icon{
+	margin-left: 2vw;
+}
+
+.social_media_icon_footer{
+	margin-top: 2vh;
+}
+
+#footer__left p{
+	margin-top: 2vh;
+}
+
+#footer__right h4{
+	margin-bottom: 2vh;
+}
+/*------------------------------------------------*/
+#footer__bottom{
+	background-color: #05222e;
+	color: white;
+	text-decoration: none;
+	padding-top: 2vh;
+	padding-bottom: 2vh;
+}
+
+#footer__bottom p{
+	margin-left: 1vw;
+	margin-right: 1vw;
+}

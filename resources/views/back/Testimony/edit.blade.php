@@ -8,7 +8,7 @@
         <li class="breadcrumb-item">
           <a href="{{route('admin.index')}}">Dashboard</a>
         </li>
-        <li class="breadcrumb-item active"><a href="{{route('testimony.index')}}">Les Témoignages</a>/Modier Témoignage de {{$testimony->applicant->first_name}} {{$testimony->applicant->last_name}}</li>
+        <li class="breadcrumb-item active"><a href="{{route('testimony.index')}}">Les Témoignages</a> / Modifier le Témoignage de {{$testimony->applicant->first_name}} {{$testimony->applicant->last_name}}</li>
       </ol>
       
   </div>

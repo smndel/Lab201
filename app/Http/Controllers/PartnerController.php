@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Partner;
 use App\Service;
 use Storage;
+use App\Http\Requests\PartnerRequest;
 
 class PartnerController extends Controller
 {
@@ -39,15 +40,8 @@ class PartnerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PartnerRequest $request)
     {
-         $this->validate($request,
-        [
-            'name' => 'required',
-            'bio' => 'required|string',
-            'picture' => 'image|mimes:jpg,png,jpeg',
-        ]);
-
         $partner = Partner::create($request->all());
         $partner->services()->attach($request->services);
 
@@ -101,15 +95,8 @@ class PartnerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PartnerRequest $request, $id)
     {
-         $this->validate($request,
-        [
-            'name' => 'required',
-            'bio' => 'required|string',
-            'picture' => 'image|mimes:jpg,png,jpeg',
-        ]);
-
         $partner = Partner::find($id);
         $partner->update($request->all());
         $partner->services()->sync($request->services);

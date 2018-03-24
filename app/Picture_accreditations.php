@@ -11,6 +11,7 @@ class Picture_accreditations extends Model
 	];
 	
      public function accreditation(){
+     	
    		return $this->belongsTo(Accreditation::class);
    }
 }

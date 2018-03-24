@@ -32,7 +32,7 @@
           <div class="card text-white bg-danger o-hidden h-100">
             <div class="card-body">
               <div class="card-body-icon">
-                <i class="fa fa-heart fa-fw"></i>
+                <i class="fa fa-star fa-fw"></i>
               </div>
               <div class="mr-5"><h3>{{count($partners)}} Collaborateurs</h3></div>
             </div>
@@ -78,14 +78,52 @@
     </div>
       </div>
 
-		
+      <div class="card mb-3 mt-5">
+          <div class="card-header">
+          <h2><i class="fa fa-table"></i> Bénéficiaire</h2></div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-bordered" id="applicantTable" width="100%" cellspacing="0">
+                <thead class="thead-light">
+                  <tr>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Entreprise</th>
+                    <th>Accepté</th>
+                    <th>Financé</th>
+                    <th>Montant</th>
+                    <th>Créé le</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tfoot>
+                  <tr>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Entreprise</th>
+                    <th>Accepté</th>
+                    <th>Financé</th>
+                    <th>Montant</th>
+                    <th>Créé le</th>
+                    <th>action</th>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+          </div>
+     </div>
+
+		<div class="row">
+      <div clas='col-12'>
     	<div class="mb-2 mt-4">
+          <div class="row d-flex justify-content-between ml-5 mr-5">
             <a href="{{route('actuality.index')}}" style="text-decoration:none;"><h2><i class="fa fa-newspaper-o"></i> Dernière Actualités></h2></a>
+          </div>
         </div>
           <hr class="mt-2">
-         <div class="card-columns">
+         <div class="card-columns col-12">
             @foreach($actualities as $actuality)
-            <div class="card mb-3">
+            <div class="card mb-5">
               <a href="{{route('actuality.show', $actuality->id)}}">
               	@if(count($actuality->picture)>0)
                 <img class="card-img-top img-fluid w-100" src="{{url('images', $actuality->picture->link)}}">
@@ -100,42 +138,22 @@
               <div class="card-footer small text-muted">{{$actuality->created_at}}</div>  
             </div>
             @endforeach
+  
+            @foreach($comments as $comment)
+            <div class="card mb-3">
+              <div class="card-body">
+                  <h6 class="card-title mb-1"><a href="{{route('applicant.show', $comment->applicant_id)}}">{{$comment->applicant->first_name}} {{$comment->applicant->last_name}}</a></h6>
+                  <p class="card-text small">{{$comment->comments}}
+                  </p>
+              </div>
+                <hr class="my-0">
+                <div class="card-footer small text-muted">{{$comment->created_at}}</div>  
+            </div>
+            @endforeach
         </div>
+      </div>
+    </div>
 
-    <div class="card mb-3 mt-5">
-          <div class="card-header">
-          <h2><i class="fa fa-table"></i> Bénéficiaire</h2></div>
-        	<div class="card-body">
-	        	<div class="table-responsive">
-	            <table class="table table-bordered" id="applicantTable" width="100%" cellspacing="0">
-	              <thead class="thead-light">
-	                <tr>
-	                  <th>Nom</th>
-	                  <th>Prénom</th>
-	                  <th>Entreprise</th>
-	                  <th>Accepté</th>
-	                  <th>Financé</th>
-	                  <th>Montant</th>
-	                  <th>Créé le</th>
-	                  <th>Action</th>
-	                </tr>
-	              </thead>
-	              <tfoot>
-	                <tr>
-	                  <th>Nom</th>
-	                  <th>Prénom</th>
-	                  <th>Entreprise</th>
-	                  <th>Accepté</th>
-	                  <th>Financé</th>
-	                  <th>Montant</th>
-	                  <th>Créé le</th>
-	                  <th>action</th>
-	                </tr>
-	              </tfoot>
-	            </table>
-        		</div>
-          </div>
-	</div>
 </div>
 </div>
 

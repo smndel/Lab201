@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Actuality;
 use Storage;
+use App\Http\Requests\ActualityRequest;
 
 class ActualityController extends Controller
 {
@@ -36,14 +37,8 @@ class ActualityController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ActualityRequest $request)
     {
-         $this->validate($request,
-        [
-            'title' => 'required',
-            'description' => 'required|string',
-            'picture' => 'image|mimes:jpg,png,jpeg',
-        ]);
 
         $actuality = Actuality::create($request->all());
 
@@ -95,15 +90,8 @@ class ActualityController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ActualityRequest $request, $id)
     {
-         $this->validate($request,
-        [
-            'title' => 'required',
-            'description' => 'required|string',
-            'picture' => 'image|mimes:jpg,png,jpeg',
-        ]);
-
         $actuality = Actuality::find($id);
         $actuality->update($request->all());
 

@@ -11,11 +11,12 @@ class Testimony extends Model
 	];
 
 	public function applicant(){
+    
    		return $this->belongsTo(Applicant::class);
-   }
+  }
 
-   public function picture(){
-   		return $this->hasOne(Picture_testimonies::class);
-   }
-
+  public function picture(){
+ 		
+    return $this->hasOne(Picture_testimonies::class);
+  }
 }

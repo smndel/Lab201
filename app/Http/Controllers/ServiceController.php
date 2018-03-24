@@ -7,6 +7,7 @@ use App\Service;
 use App\Partner;
 use App\Applicant;
 use Storage;
+use App\Http\Requests\ServiceRequest;
 
 class ServiceController extends Controller
 {
@@ -33,7 +34,11 @@ class ServiceController extends Controller
         $types = Service::pluck('type', 'id');
         $categories = Service::pluck('category', 'id');
 
-        return view('back.service.create', ['partners'=>$partners, 'categories'=>$categories, 'types'=>$types]);
+        return view('back.service.create', [
+            'partners'      => $partners, 
+            'categories'    => $categories, 
+            'types'         => $types
+        ]);
     }
 
     /**
@@ -42,15 +47,8 @@ class ServiceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ServiceRequest $request)
     {
-         $this->validate($request,
-        [
-            'title' => 'required',
-            'description' => 'required|string',
-            'picture' => 'image|mimes:jpg,png,jpeg',
-        ]);
-
         $service = service::create($request->all());
         $service->partners()->attach($request->partners);
 
@@ -102,15 +100,8 @@ class ServiceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ServiceRequest $request, $id)
     {
-        $this->validate($request,
-        [
-            'title' => 'required',
-            'description' => 'required|string',
-            'picture' => 'image|mimes:jpg,png,jpeg',
-        ]);
-
         $service = Service::find($id);
         $service->update($request->all());
         $service->partners()->sync($request->partners);

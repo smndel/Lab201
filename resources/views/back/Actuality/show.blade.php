@@ -36,8 +36,8 @@
     </div>
     <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
       <div class="card-body">
-	      <li class="list-group-item"><strong>Nom</strong> : {{$actuality->title}}</li>
-        <li class="list-group-item"><strong>Contenu</strong> : {{$actuality->description}}</li>
+	      <li class="list-group-item"><strong>Titre</strong> : {{$actuality->title}}</li>
+        <li class="list-group-item"><strong>Description</strong> : {{$actuality->description}}</li>
         <li class="list-group-item"><strong>Statut</strong> :
         @if($actuality->statut=='publish')Publié
         @else Non publié

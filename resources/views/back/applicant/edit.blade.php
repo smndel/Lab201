@@ -9,7 +9,7 @@
         <li class="breadcrumb-item">
           <a href="{{route('admin.index')}}">Dashboard</a>
         </li>
-        <li class="breadcrumb-item active"><a href="{{route('applicant.index')}}">Bénéficiaire</a> / Modification 
+        <li class="breadcrumb-item active"><a href="{{route('applicant.index')}}">Bénéficiaire</a> / Modifier un Bénéficiaire 
         </li> 
       </ol>
     </div>
@@ -93,10 +93,10 @@
           </li>
 
     	    <li class="list-group-item"> 
-                  <strong>Nouvelle date de Premier contact</strong> : 
-                  <div class="col-4 col-form-label">
-                  <input class="form-control" name="contact" size="16" type="date" value="{{$applicant->questionnaire_sent}}"> 
-                  </div>
+            <strong>Nouvelle date de Premier contact</strong> : 
+            <div class="col-4 col-form-label">
+            <input class="form-control" name="contact" size="16" type="date" value="{{$applicant->questionnaire_sent}}"> 
+            </div>
           </li>
 
     	    <li class="list-group-item"><strong>Expérience</strong>
@@ -110,7 +110,7 @@
           </li>
 
     	    <li class="list-group-item"><strong>Niveau d'étude</strong> : 
-            <select class="form-control" id="education_level_id" name="education_level_id"   
+            <select class="form-control" id="education_level_id" name="education_level_id">   
             @forelse($education_levels as $id => $education_level)  
             <option value="{{$id}}" 
             @if((($id)==$applicant->education_level_id)) selected='selected' @endif>{{$education_level}}</option>
@@ -171,10 +171,7 @@
 
             <li class="list-group-item"><strong>Accepté</strong> : 
               <select class="form-control" id="accepted" name="accepted">       
-              <option value="oui" 
-              @if($applicant->accepted == 'oui') selected='selected' @endif>
-              Oui
-              </option>
+              <option value="oui" @if($applicant->accepted == 'oui') selected='selected' @endif>Oui</option>
               <option value="en_cours" @if($applicant->accepted == 'en_cours') selected='selected' @endif>En cours</option>
               <option value="non" @if($applicant->accepted == 'non') selected='selected' @endif>Non</option>
               </select>
@@ -188,7 +185,7 @@
               </select>
           </li>
     	    <li class="list-group-item"><strong>Montant</strong> :
-              <input type="number" name="price" id="price" min="1" max="10000" value="{{$applicant->price}}" step="any"> H.T
+              <input type="number" name="price" id="price" min="1" max="10000" value="{{$applicant->price}}" step="any">  € H.T
               @if($errors->has('price'))
               <span class="error" style="color : red;">
               {{$errors->first('price')}}
@@ -198,13 +195,26 @@
 
           <li class="list-group-item list-input"><strong>Etalement</strong> :
               <button class="add_form_field btn btn-outline-danger btn-sm">Ajouter &nbsp; <span style="font-size:16px; font-weight:bold;"></span></button>
+              @if(isset($events))
               @foreach($events as $event)
               <div class="form-control">
-                <input name=event[] type="number" value="{{$event['value']}}" >
+                <input name=event[] type="number" value="{{$event['value']}}"  €>
                 <input name=event[] type="date" value="{{$event['start_date']}}">
                 <a href="#" class="delete"><i class="fa fa-times"></i></a>
               </div>
               @endforeach
+              @else
+              <div class="form-control">
+                <input name=event[] type=number value="value" €>
+                <input name=event[] type="date" value="start_date" class="start_date">
+              </div>
+              @endif
+ 
+              @if($errors->has('event[]'))
+              <span class="error" style="color : red;">
+              {{$errors->first('event[]')}}
+              </span>
+              @endif
           </li>
 
     	    <li class="list-group-item"><strong>Organisme</strong> : 

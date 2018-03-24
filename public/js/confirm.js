@@ -60,25 +60,25 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 44);
+/******/ 	return __webpack_require__(__webpack_require__.s = 15);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 44:
+/***/ 15:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(45);
+module.exports = __webpack_require__(16);
 
 
 /***/ }),
 
-/***/ 45:
+/***/ 16:
 /***/ (function(module, exports) {
 
 (function () {
 	$(".delete").on("submit", function () {
-		return confirm("Voulez vous supprimer cet élément ?");
+		return confirm("Voulez-vous vraiment supprimer cet élément ?");
 	});
 })($);
 

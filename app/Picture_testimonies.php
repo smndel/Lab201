@@ -11,6 +11,7 @@ class Picture_testimonies extends Model
 	];
 	
      public function partner(){
+     	
    		return $this->belongsTo(Testimony::class);
    }
 }
