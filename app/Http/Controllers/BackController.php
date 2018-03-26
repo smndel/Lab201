@@ -17,7 +17,7 @@ class BackController extends Controller
         $partners = Partner::all();
         $services = Service::all();
         $actualities = Actuality::orderBy('created_at')->take(4)->get();
-        $comments = Comment::orderBy('created_at')->take(6)->get();
+        $comments = Comment::orderBy('created_at')->take(4)->get();
 
         
 

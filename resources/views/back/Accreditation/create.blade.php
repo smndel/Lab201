@@ -20,7 +20,7 @@
 
 <div class="card col-md-8 mx-auto">
       <div class="jumbotron">
-        <h1 class="display-4">Rédiger une nouvelle actualité</h1>
+        <h1 class="display-4">Rédiger une nouvelle Accréditation</h1>
       </div>
 
 
@@ -45,6 +45,14 @@
           <option value="publish" @if(old('statut') == 'publish') selected='selected' @endif>Publier</option>
           <option value="unpublish" @if(old('statut') == 'unpublish') selected='selected' @endif>Dépublier</optio>
           </select>
+      </li>
+      <li class="list-group-item"><strong>Lien</strong> :
+          <input value="{{old('url')}}" type="url" name="url" class="w-100">
+          @if($errors->has('url'))
+          <span class="error" style="color : red;">
+          {{$errors->first('url')}}
+          </span>
+          @endif
       </li>
     </div>
   </div>

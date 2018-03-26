@@ -78,9 +78,10 @@
               <span class="error" style="color : red;">
               {{$errors->first('description')}}
               </span>
-              @endif</li>
-      </div>
+              @endif
+        </li>
     </div>
+  </div>
 
 
   <div class="card">

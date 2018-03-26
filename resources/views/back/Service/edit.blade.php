@@ -9,7 +9,7 @@
         <li class="breadcrumb-item">
           <a href="{{route('admin.index')}}">Dashboard</a>
         </li>
-        <li class="breadcrumb-item active"><a href="{{route('service.index')}}">Les Services</a> / Modifier Service</li>
+        <li class="breadcrumb-item active"><a href="{{route('service.index')}}">Les Services</a> / Modifier le service {{$service->title}}</li>
       </ol>
       
   </div>

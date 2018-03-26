@@ -4,13 +4,13 @@
         <div class="row justify-content-between">
                     <div class="col-lg ml-lg-2 justify-content-around" id="header__left">
                         <a href="#">
-                            <div id="header__left__address" class="ml-10">
+                            <div id="header__left__address" class="ml-10 d-none d-lg-block">
             					<p>6 AVENUE PERCIER 75008 PARIS<br><i class="fa fa-phone fa-2x"></i> O1 45 26 76 23</p>
                             </div>
                         </a>
                     </div>
 
-                    <div class="col-lg d-flex justify-content-center" id="header__middle">
+                    <div class="col-lg d-flex justify-content-center col-sm-12" id="header__middle">
                         <img src="{{asset('/images_front/logo.png')}}" alt='logo' id="header__logo">
                     </div>
 

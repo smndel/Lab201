@@ -6,12 +6,12 @@
     	<a href="#"><p>ENTRETIEN GRATUIT</p></a>
 </div>
 
-<div class="col-12 mx-auto" id="main__top">
-	<div class="row justify-content-center">
+<section class="col-12 mx-auto" id="main__top">
+	<section class="row justify-content-center">
 		<div class="col-10" id="main__top__linkService">
 			<h1>AFOGEC COMPETENCES VOUS ACCOMPAGNE<br>TOUT AU LONG DE LA VIE</h1>
 				<div class="row justify-content-around" id="main__top__linkService__card">
-					<div class="card col-lg-3" style="width: 18rem;">
+					<div class="card col-lg-3 col-sm-12" style="width: 18rem;">
 					  <div class="card-img-top mx-auto" alt="Card image cap" id="img_bc">
 					  </div>
 					  <div class="card-body pl-0 pr-0 mx-auto">
@@ -19,7 +19,7 @@
 					  </div>
 					</div>
 
-					<div class="card col-lg-3" style="width: 18rem;">
+					<div class="card col-lg-3 col-sm-12" style="width: 18rem;">
 					  <div class="card-img-top mx-auto" alt="Card image cap" id="img_vae">
 					  </div>
 					  <div class="card-body pl-0 pr-0 mx-auto">
@@ -27,7 +27,7 @@
 					  </div>
 					</div>
 
-					<div class="card col-lg-3" style="width: 18rem;">
+					<div class="card col-lg-3 col-sm-12" style="width: 18rem;">
 					  <div class="card-img-top mx-auto" alt="Card image cap" id="img_retraite">
 					  </div>
 					  <div class="card-body pl-0 pr-0 mx-auto">
@@ -36,9 +36,9 @@
 					</div>
 				</div>
 		</div>
-	</div>
+	</section>
 
-	<div class="row justify-content-center">
+	<section class="row justify-content-center">
 		<div class="col-lg-6" id="main__presentation">
 		<h2>QUI SOMME-NOUS?</h2>
 			<hr>
@@ -49,7 +49,7 @@
 			</div>
 			<button type="button" class="btn my-secondary btn-lg">JE PRENDS RDV</button>
 		</div>
-	</div>
+	</section>
 
 
 	<div class="col-12" id="main__top__bottom">
@@ -58,37 +58,36 @@
 			<div class="col-lg-6" id="main__top__bottom__director">		
 					<h3>LE MOT DE LA DIRECTRICE</h3>
 
-				<div class="row justify-content-center  d-flex align-items-center">
-					<div class="col-4 director_image">
+				<div class="row justify-content-center d-flex align-items-center">
+					<div class="col-4 col-6-sm director_image d-none d-sm-block">
 					@foreach($partners as $partner)
-					@if(($partner->position) =='director')
-					<img src="{{url('images', $partner->picture->link)}}" alt="photo de la directrice" class="rounded-circle">
-					</div>
-					@else
-					@endif
+						@if(($partner->position) =='director')
+						<img src="{{url('images', $partner->picture->link)}}" alt="photo de la directrice" class="rounded-circle">
+						</div>
+						@else
+						@endif
 					@endforeach
 
-					<div class="col-6" id="diretor_text">
+					<div class="col-6 col-6-sm" id="diretor_text">
 						<p>
 						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia voluptates perferendis, tempore dicta atque culpa officiis, voluptatibus ducimus rem reiciendis magnam veniam esse fugiat minima laboriosam pariatur odit debitis mollitia.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia voluptates perferendis, tempore dicta atque culpa officiis.
-
 						</p>
 					</div>
 				</div>
 			</div>
 
-			<div id="carousel_actualities" class="carousel slide col-lg-4" data-ride="carousel">
+			<section id="carousel_actualities" class="carousel slide col-lg-4" data-ride="carousel">
 
 	                <!-- Wrapper for slides -->
 	                <div class="carousel-inner" role="listbox">
 	                    @foreach( $actualities as $actuality)
 	                        <div class="carousel-item {{ $loop->first ? 'active' : '' }}" >
-	                        	<div class="card" style="width:100%;">
+	                        	<div class="card p-5" style="width:100%;">
 								  <div class="card-body">
 								    <h5 class="card-title"><img src="{{url('/images_front/evenement.png')}}">{{Carbon\Carbon::parse($actuality->created_at)->format('d.m.Y')}}</h5>
 								    <h6 class="card-subtitle mb-2">{{$actuality->title}}</h6>
 								    <p class="card-text">{{$actuality->description}}</p>
-								    <a href="#" class="card-link float-right">En savoir plus<i class="fa fa-chevron-right fa-1x"></i></a>
+								    <a href="#" class="card-link float-right">En savoir plus</i></a>
 								  </div>
 								</div>											
 	                        </div>
@@ -104,49 +103,49 @@
 	                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
 				    	<span class="sr-only">Next</span>
 	                </a>
-	        </div>
+	        </section>
 		</div>
-	</div>
-</div>
+	</section>
+</section>
 
-<div class="col-12" id="main__middle">
-		<div class="row justify-content-around" id="main__middle__top">
-			<div class="col-2-lg col-12-xs">
+<section class="col-12" id="main__middle">
+		<section class="row justify-content-around" id="main__middle__top">
+			<div class="col-2-lg col-12-sm">
 				<figure class="figure">
 				  		<img src="{{asset('images_front/personnesacc.png')}}" class="figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
 				  		<figcaption class="figure-caption"><span class="counter">{{count($applicants)}}</span> Personnes<br> accompagnées</figcaption>
 				</figure>
 			</div>
 
-			<div class="col-2-lg col-12-xs">
+			<div class="col-2-lg col-12-sm">
 				<figure class="figure">
 				  <img src="{{asset('images_front/accredi.png')}}" class="figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
 				  <figcaption class="figure-caption"><span class="counter">{{count($accreditations)}}</span> accréditations,<br> gages de qualité</figcaption>
 				</figure>
 			</div>
 
-			<div class="col-2-lg col-12-xs">
+			<div class="col-2-lg col-12-sm">
 				<figure class="figure">
 				  <img src="{{asset('images_front/disposi.png')}}" class="figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
 				  <figcaption class="figure-caption"><span class="counter">{{count($services)}}</span> dispositifs<br> d'accompagnement</figcaption>
 				</figure>
 			</div>
 
-			<div class="col-2-lg col-12-xs">
+			<div class="col-2-lg col-12-sm">
 				<figure class="figure">
 				  <img src="{{asset('images_front/consultant.png')}}" class="figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
 				  <figcaption class="figure-caption"><span class="counter">{{count($partners)}}</span> consultants<br> experts</figcaption>
 				</figure>
 			</div>
-		</div>
-</div>
+		</section>
+</section>
 
-	<div class="col-12" id="main__middle__bottom">
+	<section class="col-12" id="main__middle__bottom">
 		<div class="row justify-content-around">
 
-			<div class="col-lg-6 d-flex align-items-center" id="main__middle__bottom__docmuentation">
+			<div class="col-lg-6 col-md-12 d-flex align-items-center" id="main__middle__bottom__docmuentation">
 				<div class="col-12">
-                    <div class="row d-flex justify-content-center">                           
+                    <div class="row d-flex justify-content-center">                
 						<h3>JE SUIS INTERESSE PAR L'UNE DE CES OFFRES</h3>
                     </div>
                     <div class="row d-flex justify-content-center mt-5">
@@ -166,7 +165,7 @@
 					<img src="{{url('images', $testimony->picture->link)}}" alt="photo de la directrice" class="rounded-circle" id="testimony_image">
 
 				<div class="row d-flex align-items-center">
-					<div class="col-9" id="testimony_text">
+					<div class="col-9 text-align-center" id="testimony_text">
 						<p>{{$testimony->testimony}}
 						</p>
 					</div>
@@ -175,9 +174,9 @@
 			@else
 			@endif
 		</div>
-	</div>
+	</section>
 
-	<div class="col-12" id="main__bottom__top">
+	<section class="col-12" id="main__bottom__top">
 		<div class="row">
 			<h2>NOS ACCREDITATIONS</h2>
 			<hr>
@@ -187,24 +186,26 @@
 			<div id="carousel_accreditations" class="carousel slide col-9" data-ride="carousel">
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner" role="listbox">
-                        <div class="col carousel-item active">
-                        	<div class="row">
-                        	@foreach($accreditations->take(5) as $accreditation)
-	                        	<div class="col">
-	                        	<img src="{{url('images',$accreditation->picture->link)}}" alt='accréditation'>
-	                        	</div>
-							@endforeach	
+                    <div class="col carousel-item active">
+                    	<div class="row">
+                    	@foreach($accreditations->slice(0, 5) as $accreditation)
+                        	<div class="col">
+                        	<a href="{{$accreditation->url}}" title="$accreditation->title" target = "_blank">
+                        	<img src="{{url('images',$accreditation->picture->link)}}" alt='accréditation'>
+                        	</a>
                         	</div>
-                        </div>
-                        <div class="col carousel-item">
-                        	<div class="row">
-                        	@foreach($accreditations->slice(0, 5) as $accreditation)
-	                        	<div class="col">
-	                        	<img src="{{url('images', $accreditation->picture->link)}}" alt='accréditation'>
-	                        	</div>
-							@endforeach	
+						@endforeach	
+                    	</div>
+                    </div>
+                    <div class="col carousel-item">
+                    	<div class="row">
+                    	@foreach($accreditations->slice(0, 5) as $accreditation)
+                        	<div class="col">
+                        	<img src="{{url('images', $accreditation->picture->link)}}" alt='accréditation'>
                         	</div>
-                        </div>
+						@endforeach	
+                    	</div>
+                    </div>
                 </div>
 
                 <!-- Controls -->
@@ -216,9 +217,9 @@
                 </a>
 		    </div>
 		</div>
-	</div>
+	</section>
 
-	<div class="col-12" id="main-bottom-middle">
+	<section class="col-12" id="main-bottom-middle">
 		<div class="row">
 			<h2>RETROUVEZ NOUS EN PLEIN COEUR DE PARIS</h2>
 			<hr>
@@ -234,9 +235,9 @@
 					{!! Mapper::render() !!}    
 			</div>
 		</div>
-	</div>
+	</section>
 
-	<div class="col-12" id="main__bottom__bottom">
+	<section class="col-12" id="main__bottom__bottom">
 		<div class="row">
 			<h2>ILS NOUS FONT CONFIANCE</h2>
 			<hr>
@@ -246,25 +247,26 @@
 			<div id="carousel_references" class="carousel slide col-9" data-ride="carousel">
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner" role="listbox">
-                        <div class="col carousel-item active">
-                        	<div class="row">
-                        	@foreach($references->slice(0, 5) as $reference)
-	                        	<div class="col">
-	                        	<img src="{{url('images',$reference->picture->link)}}" alt='accréditation'>
-	                        	</div>
-							@endforeach	
+                    <div class="col carousel-item active">
+                    	<div class="row">
+                    	@foreach($references->slice(0, 5) as $reference)
+                        	<div class="col">
+                        	<img src="{{url('images',$reference->picture->link)}}" alt='accréditation'>
                         	</div>
-                        </div>
-                        <div class="col carousel-item">
-                        	<div class="row">
-                        	@foreach($references->slice(0, 5) as $reference)
-	                        	<div class="col">
-	                        	<img src="{{url('images', $reference->picture->link)}}" alt='accréditation'>
-	                        	</div>
-							@endforeach	
+						@endforeach	
+                    	</div>
+                    </div>
+                    <div class="col carousel-item">
+                    	<div class="row">
+                    	@foreach($references->slice(0, 5) as $reference)
+                        	<div class="col">
+                        	<img src="{{url('images', $reference->picture->link)}}" alt='accréditation'>
                         	</div>
-                        </div>
+						@endforeach	
+                    	</div>
+                    </div>
                 </div>
+
 
                 <!-- Controls -->
                 <a class="carousel-control-prev" href="#carousel_references" role="button" data-slide="prev">
@@ -275,7 +277,7 @@
                 </a>
 		    </div>
 		</div>
-	</div>
+	</section>
 
                         
 

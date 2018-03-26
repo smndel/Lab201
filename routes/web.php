@@ -13,6 +13,8 @@
 
 Route::get('/', 'FrontController@index')->name('index');
 
+Route::get('/home', 'HomeController@index')->name('home');
+
 Auth::routes();
 Route::middleware(['auth'])->group(
 	function(){

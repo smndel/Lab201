@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Accreditation extends Model
 {
     protected $fillable = [
-        'title', 'statut'
+        'title', 'statut', 'url'
     ];
 
     public function picture(){

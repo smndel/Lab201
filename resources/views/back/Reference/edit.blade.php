@@ -8,7 +8,7 @@
         <li class="breadcrumb-item">
           <a href="{{route('admin.index')}}">Dashboard</a>
         </li>
-        <li class="breadcrumb-item active"><a href="{{route('reference.index')}}">Les Références</a> / Modifier Référence</li>
+        <li class="breadcrumb-item active"><a href="{{route('reference.index')}}">Les Références</a> / Modifier la référence {{$reference->company}}</li>
       </ol>
       
   </div>

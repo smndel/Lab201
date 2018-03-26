@@ -67,22 +67,30 @@ class ApplicantController extends Controller
         ]);
 
         $event = $request->event;
-        foreach($event as $key=>$value)
-        {
-            if($value==null){ 
-                unset($event[$key]); 
+        
+        if(isset($event)){
+            foreach($event as $key=>$value)
+            {
+                if($value==null){
+                    unset($event[$key]);
+                }
             }
-        }
 
-        $event_length = count($event);
+            if(count($event)%2==0){
+                $event_length = count($event);
 
-        for($i=0; $i<$event_length; $i=$i+2){
-        $applicant->events()->create([
-            'value'         => $event[$i],
-            'start_date'    => $event[$i+1],
-            'end_date'      => $event[$i+1],
-        ]);
+                for($i=0; $i<$event_length; $i=$i+2){
 
+                    $applicant->events()->create([
+                        'value'      => $event[$i],
+                        'start_date' => $event[$i+1],
+                        'end_date'   => $event[$i+1]]);
+                }
+
+            }else{
+
+                return redirect()->route('applicant.create', $applicant)->with('message', "Il manque la date et/ou le montant pour l'étalement du paiement");
+            }
         }
 
         
@@ -151,27 +159,35 @@ class ApplicantController extends Controller
 
         $event = $request->event;
         $applicant = Applicant::find($id);
-        $applicant->events()->delete();
         
         if(isset($event)){
-        $event = $request->event;
-
-        foreach($event as $key=>$value)
-        {
-            if($value==null){ 
-                unset($event[$key]); 
+            foreach($event as $key=>$value)
+            {
+                if($value==null){
+                    unset($event[$key]);
+                }
             }
+
+            if(count($event)%2==0){
+                $applicant->events()->delete();
+                $event_length = count($event);
+
+                for($i=0; $i<$event_length; $i=$i+2){
+                    $applicant->events()->create([
+                        'value'      => $event[$i],
+                        'start_date' => $event[$i+1],
+                        'end_date'   => $event[$i+1]
+                    ]);
+                }
+
+            }else{
+                return redirect()->route('applicant.edit', $applicant)->with('message', "Il manque la date et/ou le montant pour l'étalement du paiement");
+            }
+        }else{
+            $applicant->events()->delete();
         }
 
-        $event_length = count($event);
-
-            for($i=0; $i<$event_length; $i=$i+2){
-                $applicant->events()->create([
-                    'value'      => $event[$i],
-                    'start_date' => $event[$i+1],
-                ]);
-            }
-        }
+        
 
         return redirect()->route('applicant.index')->with('message', 'Bénéficiaire modifié');
     }

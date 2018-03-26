@@ -1,6 +1,6 @@
 <div class="row" id="footer">
 
-	<div class="col-4 pt-5" id="footer__left">
+	<div class="col-4 pt-5 d-none d-sm-block" id="footer__left">
 		<img src="{{url('/images_front/logo-footer.png')}}" alt='logo footer'>
 			<p>UN ACCOMPAGNEMENT TOUT AU LONG DE<br>VOTRE VIE</p>
 	</div>
@@ -13,7 +13,7 @@
 		</div>
 	</div>
 
-	<div class="col-4 pt-5" id="footer__right">
+	<div class="col-4 pt-5 d-none d-sm-block" id="footer__right">
 		<h4>QUALITE ET CERTIFICATION</h4>
 		<img src="{{url('/images_front/datadock.png')}}">
 	</div>

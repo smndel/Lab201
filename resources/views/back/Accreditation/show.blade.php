@@ -41,7 +41,13 @@
         @if($accreditation->statut=='publish')Publié
         @else Non publié
         @endif
-      </li>
+        </li>
+        <li class="list-group-item"><strong>Lien</strong> :
+        @if(isset($accreditation->url))
+         {{$accreditation->url}}
+        @else Pas de lien
+        @endif
+        </li>
         <li class="list-group-item"><strong>Date</strong> : {{Carbon\Carbon::parse($accreditation->created_at)->format('d.m.Y')}}</li>
       </div>
     </div>

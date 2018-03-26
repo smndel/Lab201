@@ -35,7 +35,7 @@ class ApplicantRequest extends FormRequest
             'price'         => 'sometimes|nullable|regex:/^\d*(\.\d{1,2})?$/',
             'comment'       => 'sometimes|nullable',
             'value'         => 'sometimes|nullable|integer',
-            'start_date'    => 'sometimes|nullable|date',
+            'start_date'    => 'sometimes|date',
         ];
     }
 }

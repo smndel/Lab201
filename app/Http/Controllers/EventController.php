@@ -12,17 +12,7 @@ class EventController extends Controller
 
 
     public function index(){
-
-        function random_color(){
-        mt_srand((double)microtime()*1000000);
-                $c = '';
-                while(strlen($c)<6){
-                    $c .= sprintf("%02X", mt_rand(0, 255));
-                }
-                return $c;
-            }
-
-
+     
         $events = [];
         $data = Event::all();
         if($data->count()) {
@@ -36,8 +26,8 @@ class EventController extends Controller
                     null,
                     // Add color and link on event
                  [
-                     'color'    => random_color(),
-                     'url'      => route('applicant.show', ''.$value->applicant_id.'')
+                     'color'    => 'green',
+                     'url'      => route('applicant.edit', ''.$value->applicant_id.'')
                  ]
                 );
             }

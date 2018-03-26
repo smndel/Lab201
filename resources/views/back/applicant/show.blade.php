@@ -39,7 +39,7 @@
 
 	    <li class="list-group-item"><strong>Expérience</strong> : 
       @if(isset($applicant->experience))
-        {{$applicant->experience}} ans>
+        {{$applicant->experience}} ans
       @else
         
       @endif

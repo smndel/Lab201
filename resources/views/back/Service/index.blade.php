@@ -55,7 +55,7 @@
                     <form style="display:inline-block" class="delete" action="{{route('service.destroy', $service)}}" method="POST">
                     	<button type="submit" class="btn btn-danger btn-xs" value="delete">Supprimer</button>
                     	<input type="hidden" name="_method" value="DELETE">
-                    	<input type="hidden" name="_token" value="{{csrf_token()}}"></form>'
+                    	<input type="hidden" name="_token" value="{{csrf_token()}}"></form>
 			      </td>
                 </tr>
 				@endif

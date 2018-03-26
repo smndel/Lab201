@@ -8,7 +8,7 @@
         <li class="breadcrumb-item">
           <a href="{{route('admin.index')}}">Dashboard</a>
         </li>
-        <li class="breadcrumb-item active"><a href="{{route('accreditation.index')}}">Les Accréditations</a> / Modifier Accréditation</li>
+        <li class="breadcrumb-item active"><a href="{{route('accreditation.index')}}">Les Accréditations</a> / Modifier l'accréditation {{$accreditation->title}}</li>
       </ol>
       
   </div>
@@ -45,6 +45,14 @@
           <option value="publish" @if($accreditation->statut == 'publish') selected='selected' @endif>Publier</option>
           <option value="unpublish" @if($accreditation->statut == 'unpublish') selected='selected' @endif>Dépublier</optio>
           </select>
+      </li>
+      <li class="list-group-item"><strong>Lien</strong> :
+          <input value="{{$accreditation->url}}"" type="url" name="url" class="w-100">
+        @if($errors->has('url'))
+          <span class="error" style="color : red;">
+          {{$errors->first('url')}}
+          </span>
+          @endif
       </li>
     </div>
   </div>

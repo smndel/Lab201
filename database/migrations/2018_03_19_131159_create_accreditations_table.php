@@ -16,6 +16,7 @@ class CreateAccreditationsTable extends Migration
         Schema::create('accreditations', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title', 100);
+            $table->string('url')->nullable();
             $table->enum('statut', ['publish', 'unpublish']);
             $table->timestamps();
         });

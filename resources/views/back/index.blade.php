@@ -114,14 +114,26 @@
      </div>
 
 		<div class="row">
-      <div clas='col-12'>
-    	<div class="mb-2 mt-4">
+      <div class="col-12">
+      @foreach($comments as $comment)
+            <div class="card mb-3">
+              <div class="card-body">
+                  <h6 class="card-title mb-1"><a href="{{route('applicant.show', $comment->applicant_id)}}">{{$comment->applicant->first_name}} {{$comment->applicant->last_name}}</a></h6>
+                  <p class="card-text small">{{$comment->comments}}
+                  </p>
+              </div>
+                <hr class="my-0">
+                <div class="card-footer small text-muted">{{$comment->created_at}}</div>  
+            </div>
+            @endforeach
+      </div>
+      <div clas='col-6'>
+    	   <div class="mb-2 mt-4">
           <div class="row d-flex justify-content-between ml-5 mr-5">
             <a href="{{route('actuality.index')}}" style="text-decoration:none;"><h2><i class="fa fa-newspaper-o"></i> Dernière Actualités></h2></a>
           </div>
         </div>
-          <hr class="mt-2">
-         <div class="card-columns col-12">
+         <div class="card-deck col-12">
             @foreach($actualities as $actuality)
             <div class="card mb-5">
               <a href="{{route('actuality.show', $actuality->id)}}">
@@ -137,24 +149,12 @@
               <hr class="my-0">
               <div class="card-footer small text-muted">{{$actuality->created_at}}</div>  
             </div>
-            @endforeach
-  
-            @foreach($comments as $comment)
-            <div class="card mb-3">
-              <div class="card-body">
-                  <h6 class="card-title mb-1"><a href="{{route('applicant.show', $comment->applicant_id)}}">{{$comment->applicant->first_name}} {{$comment->applicant->last_name}}</a></h6>
-                  <p class="card-text small">{{$comment->comments}}
-                  </p>
-              </div>
-                <hr class="my-0">
-                <div class="card-footer small text-muted">{{$comment->created_at}}</div>  
-            </div>
-            @endforeach
+            @endforeach  
         </div>
       </div>
     </div>
+</div>
+</div>
 
-</div>
-</div>
 
 @endsection

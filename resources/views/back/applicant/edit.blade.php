@@ -9,10 +9,19 @@
         <li class="breadcrumb-item">
           <a href="{{route('admin.index')}}">Dashboard</a>
         </li>
-        <li class="breadcrumb-item active"><a href="{{route('applicant.index')}}">Bénéficiaire</a> / Modifier un Bénéficiaire 
+        <li class="breadcrumb-item active"><a href="{{route('applicant.index')}}">Les Bénéficiaire</a> / Modifier le Bénéficiaire {{$applicant->last_name}} {{$applicant->first_name}}
         </li> 
       </ol>
     </div>
+
+    @if(Session::has('message'))
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          <strong>{{Session::get('message')}}</strong> 
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        @endif
 
 <form action="{{route('applicant.update', $applicant)}}" method="post">
     <!-- Token de sécurité : -->
@@ -209,10 +218,9 @@
                 <input name=event[] type="date" value="start_date" class="start_date">
               </div>
               @endif
- 
-              @if($errors->has('event[]'))
+              @if($errors->has('event'))
               <span class="error" style="color : red;">
-              {{$errors->first('event[]')}}
+              {{$errors->first('event')}}
               </span>
               @endif
           </li>

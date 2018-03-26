@@ -40,11 +40,11 @@
           <div class="d-flex justify-content-around">
           <a href="{{route('partner.show', $partner->id)}}" class="btn btn-success btn-xs"><i class="fa fa-eye text-ligth"></i></a>
           <a href="{{route('partner.edit', $partner->id)}}" class="btn btn-warning btn-xs"><i class="fa fa-edit text-ligth"></i></a>
-            <form class="delete" action="{{route('partner.destroy', $partner->id)}}" method="POST">
-              <button type="submit" class="btn btn-danger btn-xs" value="delete"><i class="fa fa-trash text-ligth"></i></button>
+          <form class="delete" action="{{route('partner.destroy', $partner->id)}}" method="POST">
+              <button type="submit" class="btn btn-danger btn-xs h-100" value="delete"><i class="fa fa-trash text-ligth"></i></button>
               <input type="hidden" name="_method" value="DELETE">
               <input type="hidden" name="_token" value="{{csrf_token()}}">
-            </form>
+          </form>
           </div>
         </div>
       </h5>
@@ -71,6 +71,6 @@
     </div>  
   </div>
 @endforeach
-</div>
+  </div>
 </div>
 @endsection

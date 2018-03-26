@@ -37,6 +37,8 @@ class FrontController extends Controller
 
     		return $str;	
     	}
+
+        if(isset($testimony))
         $applicantFL = firstLetter($testimony->applicant->last_name);
 
         //GOOGLE MAP
