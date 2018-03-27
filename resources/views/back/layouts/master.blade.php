@@ -17,7 +17,8 @@
     <!-- Datatables CSS-->
     <link href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
     <!-- Custom Fonts -->
-    <link href="{{asset('vendor/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">    
+    <link href="{{asset('vendor/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css"> 
+
 </head>
 
 <body>
@@ -56,6 +57,7 @@
                 {"data":"funded"},
                 {"data":"price"},
                 {"data":"created_at"},
+                {"data":"updated_at"},
                 {"data":"action", "searchable":false,"orderable":false}
             ]    
     } );

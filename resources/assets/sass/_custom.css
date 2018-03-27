@@ -4,7 +4,6 @@
 	height: 200px;
 	top:40%;
 	right:0%;
-	background:#eb9000;
 	padding:15px;
 	-webkit-border-radius: 5px;
     -moz-border-radius: 5px;
@@ -12,12 +11,13 @@
     z-index: 1;
     transition-property: background-color; 
     transition-duration: 0.5s;
+    background-image: url(/'images_front/entretien_gratuit.png');
 }
 
-.share_box:hover{
+/*.share_box:hover{
 	background:#08374b;
 }
-
+*/
 
 .share_box p{
  	writing-mode: vertical-rl;

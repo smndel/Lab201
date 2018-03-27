@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <link rel="icon" type="image/png" href="/images_front/logo.png" />
-        <title>AFOGEC Compétences</title>
+        <title>AFOGEC Compétences / Accueil Particulier</title>
         <html xmlns:og="http://ogp.me/ns#"/> 
         <meta property="og:title" content="AFOGEC Compétences" />
         <meta property="og:type" content="article" />

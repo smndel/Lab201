@@ -41,6 +41,7 @@
                   <th>Financé</th>
                   <th>Montant</th>
                   <th>Créé le</th>
+                  <th>Modifié le</th>
                   <th>Action</th>
                 </tr>
               </thead>
@@ -53,6 +54,7 @@
                   <th>Financé</th>
                   <th>Montant</th>
                   <th>Créé le</th>
+                  <th>Modifié le</th>
                   <th>action</th>
                 </tr>
             </table>

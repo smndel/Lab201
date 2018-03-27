@@ -16,9 +16,9 @@
           <div class="card text-white bg-warning o-hidden h-100">
             <div class="card-body">
               <div class="card-body-icon">
-                <i class="fa fa-fw fa-list"></i>
+                <i class="fa fa-fw fa-list fa-3x"></i>
               </div>
-              <div class="mr-5"><h3>{{count($applicants)}} Bénéficaires</h3></div>
+              <div class="mr-5 mt-3"><h3>{{count($applicants)}} Bénéficaires</h3></div>
             </div>
             <a class="card-footer text-white clearfix small z-1" href="{{route('applicant.index')}}">
               <span class="float-left">Details</span>
@@ -32,11 +32,11 @@
           <div class="card text-white bg-danger o-hidden h-100">
             <div class="card-body">
               <div class="card-body-icon">
-                <i class="fa fa-star fa-fw"></i>
+                <i class="fa fa-money fa-3x"></i>
               </div>
-              <div class="mr-5"><h3>{{count($partners)}} Collaborateurs</h3></div>
+              <div class="mr-5 mt-3"><h3>Paiements en Attente {{$pending_payments}} €</h3></div>
             </div>
-            <a class="card-footer text-white clearfix small z-1" href="{{route('partner.index')}}">
+            <a class="card-footer text-white clearfix small z-1" href="{{route('calendar')}}">
               <span class="float-left">Details</span>
               <span class="float-right">
                 <i class="fa fa-angle-right"></i>
@@ -48,11 +48,11 @@
           <div class="card text-white bg-success o-hidden h-100">
             <div class="card-body">
               <div class="card-body-icon">
-                <i class="fa fa-book fa-fw"></i>
+                <i class="fa fa-comments fa-3x"></i>
               </div>
-              <div class="mr-5"><h3>{{count($services)}} Services</h3></div>
+              <div class="mr-5 mt-3"><h3>Il y a {{$new_comments}} nouveau(x) commentaire(s) depuis hier</h3></div>
             </div>
-            <a class="card-footer text-white clearfix small z-1" href="{{route('service.index')}}">
+            <a class="card-footer text-white clearfix small z-1" href="{{route('applicant.index')}}">
               <span class="float-left">Details</span>
               <span class="float-right">
                 <i class="fa fa-angle-right"></i>
@@ -64,9 +64,9 @@
           <div class="card text-white bg-info o-hidden h-100">
             <div class="card-body">
               <div class="card-body-icon">
-                <i class="fa fa-heart fa-fw"></i>
+                <i class="fa fa-heart fa-fw fa-3x"></i>
               </div>
-              <div class="mr-5"><h3>{{count($actualities)}} Actualités</h3></div>
+              <div class="mr-5 mt-3"><h3>{{count($actualities)}} Actualités</h3></div>
             </div>
             <a class="card-footer text-white clearfix small z-1" href="{{route('actuality.index')}}">
               <span class="float-left">Details</span>
@@ -93,6 +93,7 @@
                     <th>Financé</th>
                     <th>Montant</th>
                     <th>Créé le</th>
+                    <th>Modifié le</th>
                     <th>Action</th>
                   </tr>
                 </thead>
@@ -105,6 +106,7 @@
                     <th>Financé</th>
                     <th>Montant</th>
                     <th>Créé le</th>
+                    <th>Modifié le</th>
                     <th>action</th>
                   </tr>
                 </tfoot>
@@ -123,7 +125,7 @@
                   </p>
               </div>
                 <hr class="my-0">
-                <div class="card-footer small text-muted">{{$comment->created_at}}</div>  
+                <div class="card-footer small text-muted">{{$comment->updated_at}}</div>  
             </div>
             @endforeach
       </div>

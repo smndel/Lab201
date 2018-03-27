@@ -201,6 +201,7 @@
                     	<div class="row">
                     	@foreach($accreditations->slice(0, 5) as $accreditation)
                         	<div class="col">
+                        	<a href="{{$accreditation->url}}" title="$accreditation->title" target = "_blank">
                         	<img src="{{url('images', $accreditation->picture->link)}}" alt='accréditation'>
                         	</div>
 						@endforeach	

@@ -217,8 +217,9 @@ class ApplicantController extends Controller
             4 => 'funded',
             5 => 'price',
             6 => 'created_at',
-            7 => 'action',
-            8 => 'id',
+            7 => 'updated_at',
+            8 => 'action',
+            9 => 'id',
         );
         
 
@@ -261,6 +262,7 @@ class ApplicantController extends Controller
                 $nestedData['funded'] = $r->funded;
                 $nestedData['price'] = $r->price;
                 $nestedData['created_at'] = date('d-m-Y',strtotime($r->created_at));
+                $nestedData['updated_at'] = date('d-m-Y',strtotime($r->updated_at));
                 $nestedData['action'] = '
                     <a href=" '.route('applicant.show', $r->id).'" class="btn btn-success btn-xs">Voir</a>
                     <a href=" '.route('applicant.edit', $r->id).'" class="btn btn-warning btn-xs">Editer</a>
